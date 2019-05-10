@@ -107,6 +107,21 @@ body {
 	line-height: 1;
 }
 
+html,
+body {
+	height: 100%;
+}
+
+.height-wrapper {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.content-wrapper {
+	flex: 1 0 auto;
+}
+
 ol,
 ul {
 	list-style: none;
@@ -168,6 +183,7 @@ a:hover {
 	justify-content: space-between;
 	align-items: center;
 	flex-wrap: wrap;
+	margin: auto;
 }
 
 .wrapper {
@@ -202,6 +218,7 @@ footer {
 
 .page-footer {
 	margin-top: 15px;
+	flex: 0 0 auto;
 }
 
 .search-input {
