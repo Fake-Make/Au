@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="height-wrapper">
-		<div class="content-wrapper">
+		<div class="flex-column content-wrapper">
 			<header class="flex-column page-header">
 				<nav class="flex-column page-nav">
 					<ul class="flex-row wrapper">
@@ -24,4 +24,4 @@
 					</form>
 				<?endif?>
 			</header>
-			<main class="flex-column wrapper">
+			<main class="flex-column wrapper main-content">

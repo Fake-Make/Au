@@ -120,6 +120,7 @@ body {
 
 .content-wrapper {
 	flex: 1 0 auto;
+	width: 100%;
 }
 
 ol,
@@ -228,6 +229,10 @@ footer {
 
 .search-submit {
 	width: 15%;
+}
+
+.main-content {
+	flex-grow: 1;
 }
 
 @media (max-width: 800px) {
@@ -514,12 +519,15 @@ footer {
 /**************************************************/
 .dialog-window {
 	width: 100%;
+	flex-grow: 1;
 }
 
 .dialog-messages {
 	width: 100%;
 	border-radius: 10px 0 0 0;
 	background: #222;
+	flex-grow: 1;
+	justify-content: flex-end;
 }
 
 .message {
