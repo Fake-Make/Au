@@ -162,6 +162,7 @@ p {
 
 a {
 	color: #fc0;
+	text-decoration: none;
 }
 
 a:hover {
@@ -617,6 +618,69 @@ footer {
 .dialog-list {
 	width: 100%;
 	box-sizing: border-box;
+}
+
+.dialog-list__item {
+	width: 100%;
+	border-bottom: 1px solid #000;
+	transition-duration: .5s;
+}
+
+.dialog-list__item:last-child {
+	border: none;
+}
+
+.dialog-list__link {
+	padding: 10px  5px;
+	box-sizing: border-box;
+	align-items: center;
+}
+
+.dialog-preview {
+	flex-grow: 1;
+	transition-duration: .5s;
+	width: 60%;
+}
+
+.dialog-preview__name {
+	width: 50%;
+	text-align: left;
+}
+
+.dialog-preview__time {
+	width: 50%;
+	text-align: right;
+	color: #bbb;
+	font-size: 80%;
+}
+
+.dialog__user-image {
+	width: 50px;
+	height: 50px;
+	border: 1px solid #000;
+	box-shadow: 0 0 10px 0 #000;
+	margin-right: 20px;
+	transition-duration: .5s;
+}
+
+.dialog-preview__message {
+	width: 100%;
+	color: #fff;
+	background: #222;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.dialog-list__item:hover {
+	background: #444;
+}
+
+.dialog-list__item:hover .dialog-preview {
+	transform: scale(1.01);
+}
+
+.dialog-list__item:hover .dialog__user-image {
+	transform: scale(1.05);
 }
 
 @media (max-width: 450px) {

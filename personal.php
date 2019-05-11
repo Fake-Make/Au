@@ -3,7 +3,8 @@
 <h1 class="invisible">Страница пользователя</h1>
 <header class="flex-row">
 	<h2 class="flex-row"><img class="user-image" src="img/box.png" alt="Фото пользователя">User Name</h2>
-	<a class="button product-control__elem" href="dialog.php">Написать сообщение</a>
+	<a class="button" href="dialog.php">Написать сообщение</a>
+	<a class="button" href="create.php">Организовать аукцион</a>
 	<nav class="flex-column auction-box personal-nav">
 		<ul class="flex-row tabs">
 			<li class="tab"><a href="personal.php?tab">Участие в аукционах</a></li>
@@ -66,32 +67,62 @@
 <?elseif("dialogs"===$tab):?>
 	<ul class="flex-column auction-box dialog-list">
 		<li class="dialog-list__item">
-			<a class="flex-row" href="dialog.php">
-				<img class="user-image" src="img/box.png" alt="Фото пользователя">
+			<a class="flex-row dialog-list__link" href="dialog.php">
+				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
-					<a href="personal.php">Another User</a>
-					<span>22:41</span>
-					<p>Слушай, хлопец, ты покупать собираешься или нет?</p>
+					<span class="dialog-preview__name">Another User</span>
+					<span class="dialog-preview__time">22:41</span>
+					<p class="dialog-preview__message">Слушай, хлопец, ты покупать собираешься или нет?</p>
 				</div>
 			</a>
 		</li>
 		<li class="dialog-list__item">
-			<a class="flex-row" href="dialog.php">
-				<img class="user-image" src="img/box.png" alt="Фото пользователя">
+			<a class="flex-row dialog-list__link" href="dialog.php">
+				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
-					<a href="personal.php">Another User</a>
-					<span>22:41</span>
-					<p>Слушай, хлопец, ты покупать собираешься или нет?</p>
+					<span class="dialog-preview__name">Вася Петров</span>
+					<span class="dialog-preview__time">23:41</span>
+					<p class="dialog-preview__message">Я передумал.</p>
 				</div>
 			</a>
 		</li>
 		<li class="dialog-list__item">
-			<a class="flex-row" href="dialog.php">
-				<img class="user-image" src="img/box.png" alt="Фото пользователя">
+			<a class="flex-row dialog-list__link" href="dialog.php">
+				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
-					<a href="personal.php">Another User</a>
-					<span>22:41</span>
-					<p>Слушай, хлопец, ты покупать собираешься или нет?</p>
+					<span class="dialog-preview__name">Петя Васильевич</span>
+					<span class="dialog-preview__time">12:41</span>
+					<p class="dialog-preview__message">Нашёл дешевле, до свидания.</p>
+				</div>
+			</a>
+		</li>
+		<li class="dialog-list__item">
+			<a class="flex-row dialog-list__link" href="dialog.php">
+				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
+				<div class="flex-row dialog-preview">
+					<span class="dialog-preview__name">Дмитрий Топотухин</span>
+					<span class="dialog-preview__time">21:21</span>
+					<p class="dialog-preview__message">Скинете ещё 2 тысячи?</p>
+				</div>
+			</a>
+		</li>
+		<li class="dialog-list__item">
+			<a class="flex-row dialog-list__link" href="dialog.php">
+				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
+				<div class="flex-row dialog-preview">
+					<span class="dialog-preview__name">Пользователь</span>
+					<span class="dialog-preview__time">10:13</span>
+					<p class="dialog-preview__message">Слушай, хлопец, ты покупать собираешься или нет? Я вообще как считаю? А я никак не считаю, мне надоело ждать, пока ты ответишь, уууухххх.</p>
+				</div>
+			</a>
+		</li>
+		<li class="dialog-list__item">
+			<a class="flex-row dialog-list__link" href="dialog.php">
+				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
+				<div class="flex-row dialog-preview">
+					<span class="dialog-preview__name">Dmitry Nevada</span>
+					<span class="dialog-preview__time">11:11</span>
+					<p class="dialog-preview__message">Слушай, хлопец, ты покупать собираешься или нет?</p>
 				</div>
 			</a>
 		</li>
