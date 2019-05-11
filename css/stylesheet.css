@@ -507,6 +507,7 @@ footer {
 @media (max-width: 450px) {
 	.login-form {
 		width: 100%;
+		margin-left: -15px;
 	}
 }
 
@@ -553,10 +554,13 @@ footer {
 @media (max-width: 550px) {
 	.dialog-input {
 		width: 100%;
+		padding: 5px 5px 25px 5px;
+		font-size: 16px;
 	}
 	
 	.dialog-send {
 		width: 100%;
+		border-radius: 0 0 10px 0;
 	}
 
 	.message {

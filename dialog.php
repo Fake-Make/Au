@@ -14,7 +14,8 @@
 		</li>
 	</ul>
 	<form class="flex-row dialog-control" action="dialog.php">
-		<input class="input-box dialog-input" type="text" name="dialog-message" placeholder="Написать сообщение">
+		<textarea class="input-box dialog-input" name="dialog-message" placeholder="Написать сообщение"></textarea>
+		<!--<input class="input-box dialog-input" type="text" name="dialog-message" placeholder="Написать сообщение">-->
 		<input class="button dialog-send" type="submit" value="Отправить">
 	</form>
 </section>
