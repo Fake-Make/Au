@@ -14,7 +14,7 @@
 				<nav class="flex-column page-nav">
 					<ul class="flex-row wrapper">
 						<li><a class="image-logo" href="index.php"><img src="img/logo.png" alt="Аукционы" height="30px"></a></li>
-						<li><a href="login.php">Войти</a> или <a href="registration">зарегистрироваться</a> | <a class="flex-row" href="personal.php">User Name<img class="user-image" src="img/box.png" alt="Фото пользователя"></a></li>
+						<li><a href="login.php">Войти</a> или <a href="registration.php">зарегистрироваться</a> | <a class="flex-row" href="personal.php">User Name<img class="user-image" src="img/box.png" alt="Фото пользователя"></a></li>
 					</ul>
 				</nav>
 				<?if(false !== strpos($_SERVER["REQUEST_URI"], "index")):?>
