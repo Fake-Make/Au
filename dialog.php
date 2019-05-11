@@ -2,7 +2,7 @@
 <?require_once("templates/header.php")?>
 <h1>Диалог с пользователем <a href="personal.php?id=11">Антон Иванович</a></h1>
 <section class="flex-column auction-box dialog-window">
-	<ul class="flex-column dialog-messages">
+	<ul class="dialog-messages">
 		<li class="message message__sent">
 			Привет. Я хотел бы спросить, как долго работала ваша мышь?
 		</li>

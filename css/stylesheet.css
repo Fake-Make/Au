@@ -532,11 +532,13 @@ footer {
 }
 
 .dialog-messages {
+	display: block;
+	overflow-y: scroll;
+	max-height: 600px;
 	width: 100%;
 	border-radius: 10px 0 0 0;
 	background: #222;
 	flex-grow: 1;
-	justify-content: flex-end;
 }
 
 .message {
@@ -548,11 +550,11 @@ footer {
 }
 
 .message__recieved {
-	align-self: flex-start;
+	float: left;
 }
 
 .message__sent {
-	align-self: flex-end;
+	float: right;
 	background: #444;
 }
 
@@ -616,8 +618,11 @@ footer {
 }
 
 .dialog-list {
+	display: block;
 	width: 100%;
 	box-sizing: border-box;
+	max-height: 600px;
+	overflow-y: scroll;
 }
 
 .dialog-list__item {
@@ -640,6 +645,7 @@ footer {
 	flex-grow: 1;
 	transition-duration: .5s;
 	width: 60%;
+	margin-right: 15px;
 }
 
 .dialog-preview__name {
