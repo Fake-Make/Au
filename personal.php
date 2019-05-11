@@ -1,10 +1,151 @@
 <?require_once("templates/header.php")?>
-<h1>Личный кабинет</h1>
-<nav class="flex-row">
-	<ul class="tabs">
-		<li class="tab"><a href="personal.php?tab=joined">Участие в аукционах</a></li>
-		<li class="tab"><a href="personal.php?tab=created">Проведение аукционов</a></li>
-		<li class="tab"><a href="personal.php?tab=dialogs">Диалоги</a></li>
+<?$tab=$_GET["tab"]?>
+<h1 class="invisible">Страница пользователя</h1>
+<header class="flex-row">
+	<h2 class="flex-row"><img class="user-image" src="img/box.png" alt="Фото пользователя">User Name</h2>
+	<a class="button product-control__elem" href="dialog.php">Написать сообщение</a>
+	<nav class="flex-column auction-box personal-nav">
+		<ul class="flex-row tabs">
+			<li class="tab"><a href="personal.php?tab">Участие в аукционах</a></li>
+			<li class="tab"><a href="personal.php?tab=created">Проведение аукционов</a></li>
+			<li class="tab"><a href="personal.php?tab=dialogs">Диалоги</a></li>
+		</ul>
+	</nav>
+</header>
+<?if("created"===$tab):?>
+	<ul class="flex-row auctions">
+		<li class="flex-column auction auction-box">
+			<a class="flex-column auction__link" href="auction.php?id=1">
+				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
+				<p>Клавиатура Logitech</p>
+				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
+				<p>Оставшееся время: <span>05:49:53</span></p>
+			</a>
+		</li>
+		<li class="flex-column auction auction-box">
+			<a class="flex-column auction__link" href="auction.php?id=1">
+				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
+				<p>Клавиатура Logitech</p>
+				<p>Текущая ставка: <span>500</span>&#8381;</p>
+				<p>Оставшееся время: <span>05:49:53</span></p>
+			</a>
+		</li>
+		<li class="flex-column auction auction-box">
+			<a class="flex-column auction__link" href="auction.php?id=1">
+				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
+				<p>Клавиатура Logitech</p>
+				<p>Текущая ставка: <span>500</span>&#8381;</p>
+				<p>Оставшееся время: <span>05:49:53</span></p>
+			</a>
+		</li>
+		<li class="flex-column auction auction-box" style="background:#999">
+			<a class="flex-column auction__link" href="auction.php?id=1">
+				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
+				<p>Клавиатура Logitech</p>
+				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
+				<p>Оставшееся время: <span>05:49:53</span></p>
+			</a>
+		</li>
+		<li class="flex-column auction auction-box" style="background:red">
+			<a class="flex-column auction__link" href="auction.php?id=1">
+				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
+				<p>Клавиатура Logitech</p>
+				<p>Текущая ставка: <span>500</span>&#8381;</p>
+				<p>Оставшееся время: <span>05:49:53</span></p>
+			</a>
+		</li>
+		<li class="flex-column auction auction-box" style="background:green">
+			<a class="flex-column auction__link" href="auction.php?id=1">
+				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
+				<p>Клавиатура Logitech</p>
+				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
+				<p>Оставшееся время: <span>05:49:53</span></p>
+			</a>
+		</li>
 	</ul>
-</nav>
+<?elseif("dialogs"===$tab):?>
+	<ul class="flex-column auction-box dialog-list">
+		<li class="dialog-list__item">
+			<a class="flex-row" href="dialog.php">
+				<img class="user-image" src="img/box.png" alt="Фото пользователя">
+				<div class="flex-row dialog-preview">
+					<a href="personal.php">Another User</a>
+					<span>22:41</span>
+					<p>Слушай, хлопец, ты покупать собираешься или нет?</p>
+				</div>
+			</a>
+		</li>
+		<li class="dialog-list__item">
+			<a class="flex-row" href="dialog.php">
+				<img class="user-image" src="img/box.png" alt="Фото пользователя">
+				<div class="flex-row dialog-preview">
+					<a href="personal.php">Another User</a>
+					<span>22:41</span>
+					<p>Слушай, хлопец, ты покупать собираешься или нет?</p>
+				</div>
+			</a>
+		</li>
+		<li class="dialog-list__item">
+			<a class="flex-row" href="dialog.php">
+				<img class="user-image" src="img/box.png" alt="Фото пользователя">
+				<div class="flex-row dialog-preview">
+					<a href="personal.php">Another User</a>
+					<span>22:41</span>
+					<p>Слушай, хлопец, ты покупать собираешься или нет?</p>
+				</div>
+			</a>
+		</li>
+	</ul>
+<?else:?>
+	<ul class="flex-row auctions">
+		<li class="flex-column auction auction-box">
+			<a class="flex-column auction__link" href="auction.php?id=1">
+				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
+				<p>Клавиатура Logitech</p>
+				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
+				<p>Оставшееся время: <span>05:49:53</span></p>
+			</a>
+		</li>
+		<li class="flex-column auction auction-box">
+			<a class="flex-column auction__link" href="auction.php?id=1">
+				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
+				<p>Клавиатура Logitech</p>
+				<p>Текущая ставка: <span>500</span>&#8381;</p>
+				<p>Оставшееся время: <span>05:49:53</span></p>
+			</a>
+		</li>
+		<li class="flex-column auction auction-box">
+			<a class="flex-column auction__link" href="auction.php?id=1">
+				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
+				<p>Клавиатура Logitech</p>
+				<p>Текущая ставка: <span>500</span>&#8381;</p>
+				<p>Оставшееся время: <span>05:49:53</span></p>
+			</a>
+		</li>
+		<li class="flex-column auction auction-box" style="background:#999">
+			<a class="flex-column auction__link" href="auction.php?id=1">
+				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
+				<p>Клавиатура Logitech</p>
+				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
+				<p>Оставшееся время: <span>05:49:53</span></p>
+			</a>
+		</li>
+		<li class="flex-column auction auction-box" style="background:red">
+			<a class="flex-column auction__link" href="auction.php?id=1">
+				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
+				<p>Клавиатура Logitech</p>
+				<p>Текущая ставка: <span>500</span>&#8381;</p>
+				<p>Оставшееся время: <span>05:49:53</span></p>
+			</a>
+		</li>
+		<li class="flex-column auction auction-box" style="background:green">
+			<a class="flex-column auction__link" href="auction.php?id=1">
+				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
+				<p>Клавиатура Logitech</p>
+				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
+				<p>Оставшееся время: <span>05:49:53</span></p>
+			</a>
+		</li>
+	</ul>
+<?endif?>
 <?require_once("templates/footer.php")?>

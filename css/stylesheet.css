@@ -187,6 +187,7 @@ a:hover {
 	margin: auto;
 }
 
+.header-wrapper,
 .wrapper {
 	width: 70%;
 }
@@ -236,11 +237,19 @@ footer {
 	justify-content: flex-start;
 }
 
+@media (min-width: 900px) {
+	.header-wrapper,
+	.wrapper {
+		width: 630px;
+	}
+}
+
 @media (max-width: 800px) {
 	body {
 		font-size: 16px;
 	}
 
+	.header-wrapper,
 	.wrapper {
 		width: 85%;
 	}
@@ -256,7 +265,13 @@ footer {
 	}
 
 	.wrapper {
-		width: 90%;
+		width: 100%;
+	}
+
+	.page-nav__item {
+		width: 100%;
+		text-align: center;
+		margin: 10px 0;
 	}
 }
 
@@ -267,6 +282,7 @@ footer {
 }
 
 .auction-box {
+	box-sizing: border-box;
 	background: #333;
 	box-shadow: 0 0 5px 0 #eee;
 	border: 5px solid #eee;
@@ -278,7 +294,7 @@ footer {
 
 .auction {
 	margin-bottom: 30px;
-	width: 25%;
+	width: 30%;
 	padding: 10px;
 	transition-duration: .5s;
 }
@@ -314,21 +330,6 @@ footer {
 	filter: drop-shadow(0 0 5px #000);
 }
 
-@media (min-width: 1400px) {
-	.auctions {
-		justify-content: space-around;
-	}
-
-	.auction {
-		width: 20%;
-		font-size: 16px;
-	}
-
-	footer {
-		font-size: 14px;
-	}
-}
-
 @media (max-width: 800px) {
 	.auctions {
 		justify-content: space-around;
@@ -344,10 +345,16 @@ footer {
 	}
 }
 
+@media (max-width: 600px) {
+	.auction {
+		width: 70%;
+		font-size: 16px;
+	}
+}
+
 @media (max-width: 450px) {
 	.auction {
 		width: 80%;
-		font-size: 16px;
 	}
 }
 
@@ -463,6 +470,7 @@ footer {
 /******************************************/
 
 .login-form {
+	box-sizing: border-box;
 	align-self: center;
 	width: 50%;
 	padding: 10px;
@@ -513,7 +521,6 @@ footer {
 @media (max-width: 450px) {
 	.login-form {
 		width: 100%;
-		margin-left: -15px;
 	}
 }
 
@@ -579,3 +586,55 @@ footer {
 }
 
 /*******************************************************************/
+
+.personal-nav,
+.tabs {
+	width: 100%;
+}
+
+.personal-nav {
+	margin: 10px 0;
+}
+
+.tab {
+	padding: 0 5px;
+	font-size: 95%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	text-align: center;
+	flex-grow: 1;
+	width: 30%;
+	height: 35px;
+	border-right: 1px solid #000;
+}
+
+.tab:last-child {
+	border: none;
+}
+
+.dialog-list {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+@media (max-width: 450px) {
+	.tab {
+		width: 100%;
+		border-right: none;
+		border-bottom: 1px solid #000;
+	}
+}
+
+/*TEST*/
+@media (max-width: 450px) {	
+	.auction-box {
+		border: none;
+		border-radius: 0;
+	}
+	body {
+		background: #333;
+		color: #fff;
+	}
+}

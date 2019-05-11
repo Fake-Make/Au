@@ -1,6 +1,6 @@
 <!--Если не залогинен, отправляем на вход-->
 <?require_once("templates/header.php")?>
-<h1>Диалог с пользователем <a href="user.php">Антон Иванович</a></h1>
+<h1>Диалог с пользователем <a href="personal?id=11.php">Антон Иванович</a></h1>
 <section class="flex-column auction-box dialog-window">
 	<ul class="flex-column dialog-messages">
 		<li class="message message__sent">
