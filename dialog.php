@@ -1,13 +1,13 @@
 <!--Если не залогинен, отправляем на вход-->
 <?require_once("templates/header.php")?>
-<h1>Диалог с пользователем <a href="personal?id=11.php">Антон Иванович</a></h1>
+<h1>Диалог с пользователем <a href="personal.php?id=11">Антон Иванович</a></h1>
 <section class="flex-column auction-box dialog-window">
 	<ul class="flex-column dialog-messages">
 		<li class="message message__sent">
-				Привет. Я хотел бы спросить, как долго работала ваша мышь?
+			Привет. Я хотел бы спросить, как долго работала ваша мышь?
 		</li>
 		<li class="message message__recieved">
-				Привет. Не очень долго. А что?
+			Привет. Не очень долго. А что?
 		</li>
 		<li class="message message__sent">
 			А вот ничего. Не хочу теперь вашу мышь покупать.
