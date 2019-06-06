@@ -12,8 +12,8 @@ class Route {
 		$controller_name = 'Main';
 		$action_name = 'index';
 
-		$fullURL = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-		$host = preg_replace("!/Au/.*!", "/Au", $fullURL);
+		$fullURL = strtolower($_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
+		$host = preg_replace("!/au/.*!", "/au", $fullURL);
 
 		$routes = explode('/', str_replace($host, "", $fullURL));
 
