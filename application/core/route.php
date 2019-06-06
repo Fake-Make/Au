@@ -12,7 +12,11 @@ class Route {
 		$controller_name = 'Main';
 		$action_name = 'index';
 
-		$routes = explode('/', str_replace("/~administrator/Au", "", $_SERVER['REQUEST_URI']));
+		preg_match("!.*/Au!", $_SERVER['REQUEST_URI'], $serverConstant);
+		$serverConstant = $serverConstant[0];
+
+		$routes = explode('/', str_replace($serverConstant, "", $_SERVER['REQUEST_URI']));
+		//		/~administrator/Au -> $serverConstant
 		/*
 		http://localhost/~administrator/Au/
 		http://localhost/~administrator/Au/services
@@ -78,6 +82,6 @@ class Route {
     //$host = 'http://'.$_SERVER['HTTP_HOST'].'/';
     //header('HTTP/1.1 404 Not Found');
 		//header("Status: 404 Not Found");
-		header('Location: /~administrator/Au/404');
+		header("Location: /~administrator/Au/404");
   }    
 }
