@@ -15,7 +15,7 @@
 					<ul class="flex-row header-wrapper">
 						<li class="page-nav__item"><a class="image-logo" href="<?=$this->host?>/"><img src="img/logo.png" alt="Аукционы" height="30px"></a></li>
 						<li class="page-nav__item">
-							<?if($_SESSION['user']):?>
+							<?if(!empty($_SESSION['user'])):?>
 								<a class="flex-row" href="<?=$this->host?>/personal"><?=validator::validAnyString($_SESSION['user'])?><img class="user-image" src="img/box.png" alt="Фото пользователя"></a>
 							<?else:?>
 								<a href="<?=$this->host?>/login">Войти</a> или <a href="<?=$this->host?>/registration">зарегистрироваться</a>
