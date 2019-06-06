@@ -12,9 +12,14 @@ class Route {
 		$controller_name = 'Main';
 		$action_name = 'index';
 
-		$host = preg_replace("!/Au/.*!", "/Au", $_SERVER['REQUEST_URI']);
+		$fullURL = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+		$host = preg_replace("!/Au/.*!", "/Au", $fullURL);
 
-		$routes = explode('/', str_replace($host, "", $_SERVER['REQUEST_URI']));
+		$routes = explode('/', str_replace($host, "", $fullURL));
+
+		//echo $host . "<br>";
+		//echo $_SERVER['REQUEST_URI'] . "<br>";
+		//echo str_replace($host, "", $_SERVER['REQUEST_URI']) . "<br>";
 		//		/~administrator/Au -> $serverConstant
 		/*
 		http://localhost/~administrator/Au/
@@ -36,6 +41,8 @@ class Route {
 		$action_name = 'action_'.$action_name;
 
 		/*
+		echo "FULL: $fullURL <br>";
+		echo "HOST: $host <br>";
 		echo "Model: $model_name <br>";
 		echo "Controller: $controller_name <br>";
 		echo "Action: $action_name <br>";

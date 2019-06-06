@@ -12,7 +12,8 @@ class View
 	*/
 	function generate($content_view, $template_view, $data = null)
 	{
-		$this->host = preg_replace("!/Au/.*!", "/Au", $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
+		//$this->host = preg_replace("!/Au/.*!", "/Au", $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
+		$this->host = preg_replace("!/Au/.*!", "/Au", $_SERVER['REQUEST_URI']);
 		/*
 		if(is_array($data)) {
 			
