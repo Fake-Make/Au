@@ -4,7 +4,7 @@ class Model
 {
 	private $db;
 	function __construct() {
-		$this->$db = new dataBase();
+		$this->db = new dataBase();
 	}
 
 	

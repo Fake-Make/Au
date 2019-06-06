@@ -9,11 +9,11 @@ class dataBase {
 	private $db;
 
 	function __construct() {
-		$this->$db = mysqli_connect(self::DB_HOST, self::DB_LOGIN, self::DB_PASSWORD, self::DB_NAME) or die ('Not connected: ' . mysqli_error($this->$db));
+		$this->db = mysqli_connect(self::DB_HOST, self::DB_LOGIN, self::DB_PASSWORD, self::DB_NAME) or die ('Not connected: ' . mysqli_error($this->db));
 	}
 
 	function validSQL($str) {
-		return mysqli_real_escape_string($this->$db, $str);
+		return mysqli_real_escape_string($this->db, $str);
 	}
 
 	function addUser($name, $login, $email, $passHash) {
@@ -24,7 +24,7 @@ class dataBase {
 		$sqlReq = "INSERT INTO users (name, login, email, passHash)
 			VALUES ('$name', '$login', '$email', '$passHash');";
 
-		return mysqli_query($this->$db, $sqlReq);
+		return mysqli_query($this->db, $sqlReq);
 	}
 	
 	function addAuction($name, $description, $initRate, $date, $user, $photo) {
@@ -34,17 +34,17 @@ class dataBase {
 		$sqlReq = "INSERT INTO auctions (name, description, photo, date, initRate, ownerId)
 			VALUES ('$name', '$description', '$photo', '$date', '$initRate', '$initRate', '$user');";
 
-		return mysqli_query($this->$db, $sqlReq);
+		return mysqli_query($this->db, $sqlReq);
 	}
 
 	function getUserHash($login) {
 		$login = $this->validSQL($login);
 		$sqlReq = "SELECT passHash from users WHERE login = '$login';";
-		return mysqli_fetch_row(mysqli_query($this->$db, $sqlReq))["0"];
+		return mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"];
 	}
 
 	function __destruct() {
-		mysqli_close($this->$db);
+		mysqli_close($this->db);
 	}
 }
 
