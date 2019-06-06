@@ -1,4 +1,3 @@
-<?require_once("templates/header.php")?>
 <h1 class="invisible">Просмотр аукциона</h1>
 <section class="flex-row auction-box auction-product">
 	<div class="flex-column product-image-box">
@@ -14,7 +13,7 @@
 		</p>
 		<div class="flex-row product-control">
 			<p class="product-control__elem product-control__bet">Текущая ставка: <span>400</span>руб.</p>
-			<a class="button product-control__elem" href="dialog.php">Написать организатору</a>
+			<a class="button product-control__elem" href="/~administrator/Au/dialog">Написать организатору</a>
 			<!--Если пользователь уже сделал ставку, то пусть топает домой-->
 			<form class="flex-row product-control__cost-form" action="auction.php">
 				<!--Добавить минимальное значение как $текущаяСтавка + $минимальныйШаг-->
@@ -25,4 +24,3 @@
 		</div>
 	</section>
 </section>
-<?require_once("templates/footer.php")?>

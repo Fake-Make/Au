@@ -103,6 +103,10 @@ section {
 	display: block;
 }
 
+textarea {
+	resize: none;
+}
+
 body {
 	line-height: 1;
 }
@@ -161,12 +165,12 @@ p {
 }
 
 a {
-	color: #fc0;
+	color: #09f;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #fa0;
+	color: #4bf;
 }
 
 /**********************************************************************************/
@@ -211,7 +215,8 @@ footer {
 .page-footer {
 	padding: 10px 0;
 	width: 100%;
-	background: #333;
+	background: #666;
+	box-shadow: 0 0 5px 2px #666;
 	color: #fff;
 }
 
@@ -255,6 +260,10 @@ footer {
 		width: 85%;
 	}
 
+	.header-wrapper {
+		flex-direction: column;
+	}
+
 	.page-nav {
 		padding: 15px 0;
 	}
@@ -270,7 +279,6 @@ footer {
 	}
 
 	.page-nav__item {
-		width: 100%;
 		text-align: center;
 		margin: 10px 0;
 	}
@@ -284,6 +292,16 @@ footer {
 
 .auction-box {
 	box-sizing: border-box;
+	background: #eee;
+	box-shadow: 0 0 5px 0 #999;
+	border-radius: 10px;
+	color: #000;
+}
+
+/*
+old version
+.auction-box {
+	box-sizing: border-box;
 	background: #333;
 	box-shadow: 0 0 5px 0 #eee;
 	border: 5px solid #eee;
@@ -292,6 +310,7 @@ footer {
 		linear-gradient(to right bottom, transparent 40%, #fc0 50%, transparent 60%) 5;
 	color: #fff;
 }
+*/
 
 .auction {
 	margin-bottom: 30px;
@@ -304,7 +323,7 @@ footer {
 	width: 100%;
 	height: 100%;
 	align-items: flex-start;
-	color: #fff;
+	color: #000;
 	text-decoration: none;
 }
 
@@ -315,7 +334,7 @@ footer {
 }
 
 .auction:hover .auction__link {
-	color: #fc0;
+	color: #4bf;
 }
 
 .auction__link * {
@@ -328,7 +347,6 @@ footer {
 
 .image-logo {
 	margin: 15px 0;
-	filter: drop-shadow(0 0 5px #000);
 }
 
 @media (max-width: 800px) {
@@ -386,6 +404,7 @@ footer {
 	font-size: 15px;
 	width: 100%;
 	align-items: flex-start;
+	color: #fff;
 }
 
 .product-control__cost-form {
@@ -422,6 +441,10 @@ footer {
 		width: 100%;
 		margin: 5px 0;
 	}
+
+	.product-control__bet {
+		text-align: center;
+	}
 }
 
 /*****************************************/
@@ -429,9 +452,9 @@ footer {
 .button {
 	padding: 10px 0;
 	font-size: 12px;
-	background: #fc0;
+	background: #09f;
 	text-align: center;
-	border-radius: 15px;
+	border-radius: 10px;
 	border: 1px solid #aaa;
 	color: #444;
 	text-decoration: none;
@@ -536,15 +559,15 @@ footer {
 	overflow-y: scroll;
 	max-height: 600px;
 	width: 100%;
-	border-radius: 10px 0 0 0;
-	background: #222;
+	border-radius: 10px 10px 0 0;
+	background: #eee;
 	flex-grow: 1;
 }
 
 .message {
 	width: auto;
 	padding: 10px;
-	background: #333;
+	background: #aaa;
 	border-radius: 10px;
 	margin: 5px 5px;
 }
@@ -555,7 +578,7 @@ footer {
 
 .message__sent {
 	float: right;
-	background: #444;
+	background: #ddd;
 }
 
 .dialog-control {
@@ -564,6 +587,8 @@ footer {
 
 .dialog-input {
 	width: 82%;
+	border-radius: 0 0 0 10px;
+	margin-bottom: 0;
 }
 
 .dialog-send {
@@ -574,12 +599,14 @@ footer {
 	.dialog-input {
 		width: 100%;
 		padding: 5px 5px 25px 5px;
+		border-radius: 0;
 		font-size: 16px;
 	}
 	
 	.dialog-send {
 		width: 100%;
-		border-radius: 0 0 10px 0;
+		border-radius: 0 0 10px 10px;
+		margin-bottom: 0;
 	}
 
 	.message {
@@ -608,9 +635,7 @@ footer {
 	align-items: center;
 	text-align: center;
 	flex-grow: 1;
-	width: 30%;
 	height: 35px;
-	border-right: 1px solid #000;
 }
 
 .tab:last-child {
@@ -689,11 +714,19 @@ footer {
 	transform: scale(1.05);
 }
 
+.create__button {
+	width: 40%;
+}
+
 @media (max-width: 450px) {
 	.tab {
 		width: 100%;
 		border-right: none;
-		border-bottom: 1px solid #000;
+		border-bottom: 1px solid #999;
+	}
+
+	.create__button {
+		width: 100%;
 	}
 }
 
@@ -703,8 +736,5 @@ footer {
 		border: none;
 		border-radius: 0;
 	}
-	body {
-		background: #333;
-		color: #fff;
-	}
 }
+
