@@ -4,7 +4,7 @@ class Controller {
 	
 	public $model;
 	public $view;
-	private $host;
+	public $host;
 	
 	function __construct()
 	{

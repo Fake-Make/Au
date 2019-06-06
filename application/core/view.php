@@ -2,7 +2,7 @@
 
 class View
 {
-	private $host;
+	public $host;
 	//public $template_view; // здесь можно указать общий вид по умолчанию.
 	
 	/*
