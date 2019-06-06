@@ -1,7 +1,7 @@
 <h1 class="invisible">Просмотр всех аукционов</h1>
 <ul class="flex-row auctions">
 	<li class="flex-column auction auction-box">
-		<a class="flex-column auction__link" href="/~administrator/Au/auction">
+		<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 			<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 			<p>Клавиатура Logitech</p>
 			<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -9,7 +9,7 @@
 		</a>
 	</li>
 	<li class="flex-column auction auction-box">
-		<a class="flex-column auction__link" href="/~administrator/Au/auction">
+		<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 			<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 			<p>Клавиатура Logitech</p>
 			<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -17,7 +17,7 @@
 		</a>
 	</li>
 	<li class="flex-column auction auction-box">
-		<a class="flex-column auction__link" href="/~administrator/Au/auction">
+		<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 			<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 			<p>Клавиатура Logitech</p>
 			<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -25,7 +25,7 @@
 		</a>
 	</li>
 	<li class="flex-column auction auction-box">
-		<a class="flex-column auction__link" href="/~administrator/Au/auction">
+		<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 			<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 			<p>Клавиатура Logitech</p>
 			<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -33,7 +33,7 @@
 		</a>
 	</li>
 	<li class="flex-column auction auction-box">
-		<a class="flex-column auction__link" href="/~administrator/Au/auction">
+		<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 			<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 			<p>Клавиатура Logitech</p>
 			<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -41,7 +41,7 @@
 		</a>
 	</li>
 	<li class="flex-column auction auction-box">
-		<a class="flex-column auction__link" href="/~administrator/Au/auction">
+		<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 			<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 			<p>Клавиатура Logitech</p>
 			<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -49,7 +49,7 @@
 		</a>
 	</li>
 	<li class="flex-column auction auction-box">
-		<a class="flex-column auction__link" href="/~administrator/Au/auction">
+		<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 			<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 			<p>Клавиатура Logitech</p>
 			<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -57,7 +57,7 @@
 		</a>
 	</li>
 	<li class="flex-column auction auction-box">
-		<a class="flex-column auction__link" href="/~administrator/Au/auction">
+		<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 			<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 			<p>Клавиатура Logitech</p>
 			<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -65,7 +65,7 @@
 		</a>
 	</li>
 	<li class="flex-column auction auction-box">
-		<a class="flex-column auction__link" href="/~administrator/Au/auction">
+		<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 			<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 			<p>Клавиатура Logitech</p>
 			<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -73,7 +73,7 @@
 		</a>
 	</li>
 	<li class="flex-column auction auction-box">
-		<a class="flex-column auction__link" href="/~administrator/Au/auction">
+		<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 			<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 			<p>Клавиатура Logitech</p>
 			<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -81,7 +81,7 @@
 		</a>
 	</li>
 	<li class="flex-column auction auction-box">
-		<a class="flex-column auction__link" href="/~administrator/Au/auction">
+		<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 			<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 			<p>Клавиатура Logitech</p>
 			<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -89,7 +89,7 @@
 		</a>
 	</li>
 	<li class="flex-column auction auction-box">
-		<a class="flex-column auction__link" href="/~administrator/Au/auction">
+		<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 			<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 			<p>Клавиатура Logitech</p>
 			<p>Текущая ставка: <span>500</span>&#8381;</p>

@@ -16,7 +16,7 @@
 	<input class="input-box login-input" type="password" name="registration-password-again" id="registration-password-again" placeholder="Пароль" required pattern="[a-zA-Z0-9 ]{6,24}">
 
 	<input class="button login-submit" type="submit" value="Регистрация">
-	<a class="button login-submit" href="/~administrator/Au/login">Войти</a>
+	<a class="button login-submit" href="<?=$this->host?>/login">Войти</a>
 </form>
 <?extract($data); ?>
 <?if($registration_status=="success"):?>

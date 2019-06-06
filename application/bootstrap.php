@@ -1,5 +1,9 @@
 <?php
 
+// Определяем текущий домен
+preg_match("!.*/Au!", $_SERVER['REQUEST_URI'], $serverConstant);
+$serverConstant = $serverConstant[0];
+
 // подключаем файлы ядра
 require_once 'core/validator.php';
 require_once 'core/database.php';

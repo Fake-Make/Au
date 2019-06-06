@@ -5,7 +5,7 @@
 	<label class="login-label" for="login-password">Пароль: </label>
 	<input class="input-box login-input" type="password" name="login-password" id="login-password" placeholder="Пароль" required pattern="[a-zA-Z0-9 ]{6,24}">
 	<input class="button login-submit" type="submit" value="Войти">
-	<a class="button login-submit" href="/~administrator/Au/registration">Регистрация</a>
+	<a class="button login-submit" href="<?=$this->host?>/registration">Регистрация</a>
 </form>
 <?extract($data); ?>
 <?if($login_status=="access_granted"):?>

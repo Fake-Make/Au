@@ -12,10 +12,9 @@ class Route {
 		$controller_name = 'Main';
 		$action_name = 'index';
 
-		preg_match("!.*/Au!", $_SERVER['REQUEST_URI'], $serverConstant);
-		$serverConstant = $serverConstant[0];
+		$host = preg_replace("!/Au/.*!", "/Au", $_SERVER['REQUEST_URI']);
 
-		$routes = explode('/', str_replace($serverConstant, "", $_SERVER['REQUEST_URI']));
+		$routes = explode('/', str_replace($host, "", $_SERVER['REQUEST_URI']));
 		//		/~administrator/Au -> $serverConstant
 		/*
 		http://localhost/~administrator/Au/
@@ -78,10 +77,9 @@ class Route {
 	}
 
 	function ErrorPage404()	{
-		//echo "Error: 404<br>";
-    //$host = 'http://'.$_SERVER['HTTP_HOST'].'/';
-    //header('HTTP/1.1 404 Not Found');
-		//header("Status: 404 Not Found");
-		header("Location: /~administrator/Au/404");
+		$host = preg_replace("!/Au/.*!", "/Au", $_SERVER['REQUEST_URI']);
+    header('HTTP/1.1 404 Not Found');
+		header("Status: 404 Not Found");
+		header("Location: $host/404");
   }    
 }

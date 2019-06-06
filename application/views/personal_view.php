@@ -3,17 +3,17 @@
 <header class="flex-row">
 	<nav class="flex-column auction-box personal-nav">
 		<ul class="flex-row tabs">
-			<li class="tab"><a href="/~administrator/Au/personal">Участие в аукционах</a></li>
-			<li class="tab"><a href="/~administrator/Au/personal/created">Проведение аукционов</a></li>
-			<li class="tab"><a href="/~administrator/Au/personal/dialogs">Диалоги</a></li>
-			<li class="tab"><a href="/~administrator/Au/create">Организовать аукцион</a></li>
+			<li class="tab"><a href="<?=$this->host?>/personal">Участие в аукционах</a></li>
+			<li class="tab"><a href="<?=$this->host?>/personal/created">Проведение аукционов</a></li>
+			<li class="tab"><a href="<?=$this->host?>/personal/dialogs">Диалоги</a></li>
+			<li class="tab"><a href="<?=$this->host?>/create">Организовать аукцион</a></li>
 		</ul>
 	</nav>
 </header>
 <?if("created"===$tab):?>
 	<ul class="flex-row auctions">
 		<li class="flex-column auction auction-box">
-			<a class="flex-column auction__link" href="/~administrator/Au/auction">
+			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 				<p>Клавиатура Logitech</p>
 				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
@@ -21,7 +21,7 @@
 			</a>
 		</li>
 		<li class="flex-column auction auction-box">
-			<a class="flex-column auction__link" href="/~administrator/Au/auction">
+			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 				<p>Клавиатура Logitech</p>
 				<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -29,7 +29,7 @@
 			</a>
 		</li>
 		<li class="flex-column auction auction-box">
-			<a class="flex-column auction__link" href="/~administrator/Au/auction">
+			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 				<p>Клавиатура Logitech</p>
 				<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -37,7 +37,7 @@
 			</a>
 		</li>
 		<li class="flex-column auction auction-box" style="background:#999">
-			<a class="flex-column auction__link" href="/~administrator/Au/auction">
+			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 				<p>Клавиатура Logitech</p>
 				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
@@ -45,7 +45,7 @@
 			</a>
 		</li>
 		<li class="flex-column auction auction-box" style="background:red">
-			<a class="flex-column auction__link" href="/~administrator/Au/auction">
+			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 				<p>Клавиатура Logitech</p>
 				<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -53,7 +53,7 @@
 			</a>
 		</li>
 		<li class="flex-column auction auction-box" style="background:green">
-			<a class="flex-column auction__link" href="/~administrator/Au/auction">
+			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 				<p>Клавиатура Logitech</p>
 				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
@@ -64,7 +64,7 @@
 <?elseif("dialogs"===$tab):?>
 	<ul class="auction-box dialog-list">
 		<li class="dialog-list__item">
-			<a class="flex-row dialog-list__link" href="/~administrator/Au/dialog">
+			<a class="flex-row dialog-list__link" href="<?=$this->host?>/dialog">
 				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
 					<span class="dialog-preview__name">Another User</span>
@@ -74,7 +74,7 @@
 			</a>
 		</li>
 		<li class="dialog-list__item">
-			<a class="flex-row dialog-list__link" href="/~administrator/Au/dialog">
+			<a class="flex-row dialog-list__link" href="<?=$this->host?>/dialog">
 				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
 					<span class="dialog-preview__name">Вася Петров</span>
@@ -84,7 +84,7 @@
 			</a>
 		</li>
 		<li class="dialog-list__item">
-			<a class="flex-row dialog-list__link" href="/~administrator/Au/dialog">
+			<a class="flex-row dialog-list__link" href="<?=$this->host?>/dialog">
 				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
 					<span class="dialog-preview__name">Петя Васильевич</span>
@@ -94,7 +94,7 @@
 			</a>
 		</li>
 		<li class="dialog-list__item">
-			<a class="flex-row dialog-list__link" href="/~administrator/Au/dialog">
+			<a class="flex-row dialog-list__link" href="<?=$this->host?>/dialog">
 				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
 					<span class="dialog-preview__name">Дмитрий Топотухин</span>
@@ -104,7 +104,7 @@
 			</a>
 		</li>
 		<li class="dialog-list__item">
-			<a class="flex-row dialog-list__link" href="/~administrator/Au/dialog">
+			<a class="flex-row dialog-list__link" href="<?=$this->host?>/dialog">
 				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
 					<span class="dialog-preview__name">Пользователь</span>
@@ -114,7 +114,7 @@
 			</a>
 		</li>
 		<li class="dialog-list__item">
-			<a class="flex-row dialog-list__link" href="/~administrator/Au/dialog">
+			<a class="flex-row dialog-list__link" href="<?=$this->host?>/dialog">
 				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
 					<span class="dialog-preview__name">Dmitry Nevada</span>
@@ -124,7 +124,7 @@
 			</a>
 		</li>
 		<li class="dialog-list__item">
-			<a class="flex-row dialog-list__link" href="/~administrator/Au/dialog">
+			<a class="flex-row dialog-list__link" href="<?=$this->host?>/dialog">
 				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
 					<span class="dialog-preview__name">Another User</span>
@@ -134,7 +134,7 @@
 			</a>
 		</li>
 		<li class="dialog-list__item">
-			<a class="flex-row dialog-list__link" href="/~administrator/Au/dialog">
+			<a class="flex-row dialog-list__link" href="<?=$this->host?>/dialog">
 				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
 					<span class="dialog-preview__name">Вася Петров</span>
@@ -144,7 +144,7 @@
 			</a>
 		</li>
 		<li class="dialog-list__item">
-			<a class="flex-row dialog-list__link" href="/~administrator/Au/dialog">
+			<a class="flex-row dialog-list__link" href="<?=$this->host?>/dialog">
 				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
 					<span class="dialog-preview__name">Петя Васильевич</span>
@@ -154,7 +154,7 @@
 			</a>
 		</li>
 		<li class="dialog-list__item">
-			<a class="flex-row dialog-list__link" href="/~administrator/Au/dialog">
+			<a class="flex-row dialog-list__link" href="<?=$this->host?>/dialog">
 				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
 					<span class="dialog-preview__name">Дмитрий Топотухин</span>
@@ -164,7 +164,7 @@
 			</a>
 		</li>
 		<li class="dialog-list__item">
-			<a class="flex-row dialog-list__link" href="/~administrator/Au/dialog">
+			<a class="flex-row dialog-list__link" href="<?=$this->host?>/dialog">
 				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
 					<span class="dialog-preview__name">Пользователь</span>
@@ -174,7 +174,7 @@
 			</a>
 		</li>
 		<li class="dialog-list__item">
-			<a class="flex-row dialog-list__link" href="/~administrator/Au/dialog">
+			<a class="flex-row dialog-list__link" href="<?=$this->host?>/dialog">
 				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
 					<span class="dialog-preview__name">Dmitry Nevada</span>
@@ -187,7 +187,7 @@
 <?else:?>
 	<ul class="flex-row auctions">
 		<li class="flex-column auction auction-box">
-			<a class="flex-column auction__link" href="/~administrator/Au/auction">
+			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 				<p>Клавиатура Logitech</p>
 				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
@@ -195,7 +195,7 @@
 			</a>
 		</li>
 		<li class="flex-column auction auction-box">
-			<a class="flex-column auction__link" href="/~administrator/Au/auction">
+			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 				<p>Клавиатура Logitech</p>
 				<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -203,7 +203,7 @@
 			</a>
 		</li>
 		<li class="flex-column auction auction-box">
-			<a class="flex-column auction__link" href="/~administrator/Au/auction">
+			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 				<p>Клавиатура Logitech</p>
 				<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -211,7 +211,7 @@
 			</a>
 		</li>
 		<li class="flex-column auction auction-box" style="background:#999">
-			<a class="flex-column auction__link" href="/~administrator/Au/auction">
+			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 				<p>Клавиатура Logitech</p>
 				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
@@ -219,7 +219,7 @@
 			</a>
 		</li>
 		<li class="flex-column auction auction-box" style="background:red">
-			<a class="flex-column auction__link" href="/~administrator/Au/auction">
+			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 				<p>Клавиатура Logitech</p>
 				<p>Текущая ставка: <span>500</span>&#8381;</p>
@@ -227,7 +227,7 @@
 			</a>
 		</li>
 		<li class="flex-column auction auction-box" style="background:green">
-			<a class="flex-column auction__link" href="/~administrator/Au/auction">
+			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
 				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
 				<p>Клавиатура Logitech</p>
 				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>

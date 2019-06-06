@@ -13,7 +13,7 @@
 		</p>
 		<div class="flex-row product-control">
 			<p class="product-control__elem product-control__bet">Текущая ставка: <span>400</span>руб.</p>
-			<a class="button product-control__elem" href="/~administrator/Au/dialog">Написать организатору</a>
+			<a class="button product-control__elem" href="<?=$this->host?>/dialog">Написать организатору</a>
 			<!--Если пользователь уже сделал ставку, то пусть топает домой-->
 			<form class="flex-row product-control__cost-form" action="auction.php">
 				<!--Добавить минимальное значение как $текущаяСтавка + $минимальныйШаг-->

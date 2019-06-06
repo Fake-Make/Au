@@ -1,5 +1,5 @@
 <h1>Создание аукциона</h1>
-<form action="/~administrator/Au/create" method="POST" class="flex-row login-form auction-box">
+<form action="<?=$this->host?>/create" method="POST" class="flex-row login-form auction-box">
 	<label class="login-label" for="good-photo">Загрузите фотографию товара:</label>
 	<input class="input-box login-input" type="file" name="good-photo" id="good-photo">
 	<label class="login-label" for="good-name">Введите название товара:</label>

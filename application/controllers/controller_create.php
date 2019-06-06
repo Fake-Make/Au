@@ -23,8 +23,9 @@ class Controller_create extends Controller {
 					$model = new Model_CreatingAuction();
 					// Обязательно что-то сделать с файлом
 					// И обязательно как-то выловить id пользователя
+					
 					if($model->addAuction($name, $description, $initRate, $date, $user, $fileName))
-						header('Location: /~administrator/Au/');	// ПЕРЕАДРЕСАЦИЯ НА СТРАНИЦУ АУКЦИОНА
+						header("Location: $this->host/");	// ПЕРЕАДРЕСАЦИЯ НА СТРАНИЦУ АУКЦИОНА
 					else
 						$data["creating_status"] = "errors";
 				}

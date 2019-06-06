@@ -25,7 +25,7 @@ class Controller_registration extends Controller {
 					// Валидация почты, ника, пароля
 					
 					$_SESSION['user'] = $login;
-					header('Location: /~administrator/Au/');
+					header("Location: $this->host/");
 				} else {
 					$data["registration_status"] = "errors";
 				}

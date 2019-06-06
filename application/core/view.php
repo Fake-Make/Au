@@ -2,7 +2,7 @@
 
 class View
 {
-	
+	private $host;
 	//public $template_view; // здесь можно указать общий вид по умолчанию.
 	
 	/*
@@ -12,7 +12,7 @@ class View
 	*/
 	function generate($content_view, $template_view, $data = null)
 	{
-		
+		$this->host = preg_replace("!/Au/.*!", "/Au", $_SERVER['REQUEST_URI']);
 		/*
 		if(is_array($data)) {
 			

@@ -13,7 +13,7 @@ class Controller_Login extends Controller {
 				session_start(); 
 				
 				$_SESSION['user'] = $login;
-				header('Location: /~administrator/Au/');
+				header("Location: $this->host/");
 			} else {
 				$data["login_status"] = "access_denied";
 			}
