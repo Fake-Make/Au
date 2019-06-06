@@ -77,7 +77,7 @@ class Route {
 	}
 
 	function ErrorPage404()	{
-		$host = preg_replace("!/Au/.*!", "/Au", $_SERVER['REQUEST_URI']);
+		$host = preg_replace("!/Au/.*!", "/Au", $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
     header('HTTP/1.1 404 Not Found');
 		header("Status: 404 Not Found");
 		header("Location: $host/404");

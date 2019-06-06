@@ -9,7 +9,7 @@ class Controller {
 	function __construct()
 	{
 		$this->view = new View();
-		$this->host = preg_replace("!/Au/.*!", "/Au", $_SERVER['REQUEST_URI']);
+		$this->host = preg_replace("!/Au/.*!", "/Au", $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
 	}
 	
 	// действие (action), вызываемое по умолчанию
