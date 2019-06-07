@@ -11,19 +11,18 @@ class Controller_create extends Controller {
 				$data["creating_status"] = "empty";
 			}	else {
 				// Пришли все поля, но их нужно валидировать
-				$name = $_POST['good-name'];
-				$description = $_POST['good-description'];
-				$initRate = $_POST['good-initRate'];
-				$date = $_POST['good-date'];
+				$name = validator::validAnyString($_POST['good-name']);
+				$description = validator::validAnyString($_POST['good-description']);
+				$initRate = validator::validPositiveFloat($_POST['good-initRate']);
+				$date = validator::validNaturalNumber($_POST['good-date']);
 				//$fileName = $_POST['good-photo'];
-				
+
 				// ВАЛИДАЦИЯ
-				if(0) {
+				if($name && $date) {
 					// ДОБАВЛЕНИЕ ДАННЫХ
-					$model = new Model_CreatingAuction();
+					$model = new Model_CreateAuction();
 					// Обязательно что-то сделать с файлом
-					// И обязательно как-то выловить id пользователя
-					
+					$user = validator::validAnyString($_SESSION['user']);
 					if($model->addAuction($name, $description, $initRate, $date, $user, $fileName))
 						header("Location: $this->host/");	// ПЕРЕАДРЕСАЦИЯ НА СТРАНИЦУ АУКЦИОНА
 					else

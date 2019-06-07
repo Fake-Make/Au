@@ -27,12 +27,18 @@ class dataBase {
 		return mysqli_query($this->db, $sqlReq);
 	}
 	
-	function addAuction($name, $description, $initRate, $date, $user, $photo) {
+	function addAuction($name, $description, $initRate, $timestamp, $user, $photo) {
 		$name = $this->validSQL($name);
-		$description = $this->validSQL($login);
+		$description = $this->validSQL($description);
+		$initRate = $this->validSQL($initRate);
+		$timestamp = $this->validSQL(date('Y-m-d H:i:s', $timestamp));
+		$user = $this->validSQL($user);
+		$photo = $this->validSQL($photo);
 		
 		$sqlReq = "INSERT INTO auctions (name, description, photo, date, initRate, ownerId)
-			VALUES ('$name', '$description', '$photo', '$date', '$initRate', '$initRate', '$user');";
+
+			VALUES ('$name', '$description', '$photo', '$timestamp', '$initRate', 
+				(SELECT id FROM users WHERE login = '$user'));";
 
 		return mysqli_query($this->db, $sqlReq);
 	}
