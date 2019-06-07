@@ -2,7 +2,7 @@
 
 class Model
 {
-	private $db;
+	public $db;
 	function __construct() {
 		$this->db = new dataBase();
 	}
