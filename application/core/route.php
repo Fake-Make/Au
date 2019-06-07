@@ -12,7 +12,7 @@ class Route {
 		$controller_name = 'Main';
 		$action_name = 'index';
 
-		$host = preg_replace("!/au/.*!", "/au", strtolower($_SERVER['REQUEST_URI']));
+		$host = preg_replace("!/au\.ru/.*!", "/au.ru", strtolower($_SERVER['REQUEST_URI']));
 		$routes = explode('/', str_replace($host, "", strtolower($_SERVER['REQUEST_URI'])));
 		
 		// получаем имя контроллера
@@ -72,7 +72,7 @@ class Route {
 	}
 
 	function ErrorPage404()	{
-		$host = preg_replace("!/au/.*!", "/au", strtolower($_SERVER['REQUEST_URI']));
+		$host = preg_replace("!/au\.ru/.*!", "/au.ru", strtolower($_SERVER['REQUEST_URI']));
     header('HTTP/1.1 404 Not Found');
 		header("Status: 404 Not Found");
 		header("Location: $host/404");

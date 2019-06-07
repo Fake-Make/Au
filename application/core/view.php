@@ -12,7 +12,7 @@ class View
 	*/
 	function generate($content_view, $template_view, $data = null)
 	{
-		$this->host = preg_replace("!/au/.*!", "/au", strtolower($_SERVER['REQUEST_URI']));
+		$this->host = preg_replace("!/au\.ru/.*!", "/au.ru", strtolower($_SERVER['REQUEST_URI']));
 		/*
 		if(is_array($data)) {
 			
