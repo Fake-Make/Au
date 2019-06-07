@@ -1,4 +1,4 @@
-<?$tab=$_GET["tab"]?>
+<?$tab=empty($_GET["tab"]) ? 1 : $_GET["tab"]?>
 <h1 class="invisible">Страница пользователя</h1>
 <header class="flex-row">
 	<nav class="flex-column auction-box personal-nav">
