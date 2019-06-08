@@ -1,7 +1,7 @@
 <h1>Создание аукциона</h1>
-<form action="<?=$this->host?>/create" method="POST" class="flex-row login-form auction-box">
-	<label class="login-label" for="good-photo">Загрузите фотографию товара:</label>
-	<input class="input-box login-input" type="file" name="good-photo" id="good-photo">
+<form action="<?=$this->host?>/create" method="POST" enctype="multipart/form-data" class="flex-row login-form auction-box">
+	<label class="login-label" for="file">Загрузите фотографию товара:</label>
+	<input class="input-box login-input" type="file" name="file" id="file">
 	<label class="login-label" for="good-name">Введите название товара:</label>
 	<input class="input-box login-input" type="text" name="good-name" id="good-name" placeholder="Apple IPhone SE" required>
 	<label class="login-label" for="good-description">Опишите товар:</label>
@@ -26,4 +26,6 @@
 <p style="color:red">Поля "Название товара" и "Начальная ставка" должны быть заполнены!</p>
 <?elseif($creating_status=="errors"):?>
 <p style="color:red">Что-то пошло не так</p>
+<?elseif($creating_status=="photoError"):?>
+<p style="color:red">Ошибка загрузки фотографии!</p>
 <?endif?>

@@ -15,15 +15,27 @@ class Controller_create extends Controller {
 				$description = validator::validAnyString($_POST['good-description']);
 				$initRate = validator::validPositiveFloat($_POST['good-initRate']);
 				$date = validator::validNaturalNumber($_POST['good-date']);
-				//$fileName = $_POST['good-photo'];
+
+				if(isset($_FILES['file'])) {
+					$file_temp = $_FILES['file']['tmp_name'];   
+					$imageinfo = getimagesize($file_temp);
+					if($imageinfo['mime'] != 'image/gif' && $imageinfo['mime'] != 'image/jpeg') {
+						$data["creating_status"] = "photoError";
+					} else {
+						$uploaddir = 'photos/';
+						$uploadfile = $uploaddir . basename($file_temp) . ".jpeg";
+						if (!move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile))
+							$data["creating_status"] = "photoError";
+					}
+				}
 
 				// ВАЛИДАЦИЯ
-				if($name && $date) {
+				if($name && $date && $data["creating_status"] !== "errors" && $data["creating_status"] !== "photoError") {
 					// ДОБАВЛЕНИЕ ДАННЫХ
 					$model = new Model_CreateAuction();
 					// Обязательно что-то сделать с файлом
 					$user = validator::validAnyString($_SESSION['user']);
-					if($model->addAuction($name, $description, $initRate, $date, $user, $fileName))
+					if($model->addAuction($name, $description, $initRate, $date, $user, $uploadfile))
 						header("Location: $this->host/");	// ПЕРЕАДРЕСАЦИЯ НА СТРАНИЦУ АУКЦИОНА
 					else
 						$data["creating_status"] = "errors";
