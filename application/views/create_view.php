@@ -1,13 +1,13 @@
 <h1>Создание аукциона</h1>
 <form action="<?=$this->host?>/create" method="POST" enctype="multipart/form-data" class="flex-row login-form auction-box">
 	<label class="login-label" for="file">Загрузите фотографию товара:</label>
-	<input class="input-box login-input" type="file" name="file" id="file">
+	<input class="input-box login-input" type="file" name="file" id="file" <?=isset($_POST['file']) ? 'value="' . $_POST['file'] . '"' : ""?>>
 	<label class="login-label" for="good-name">Введите название товара:</label>
-	<input class="input-box login-input" type="text" name="good-name" id="good-name" placeholder="Apple IPhone SE" required>
+	<input class="input-box login-input" type="text" name="good-name" id="good-name" placeholder="Apple IPhone SE" required <?=isset($_POST['good-name']) ? 'value="' . $_POST['good-name'] . '"' : ""?>>
 	<label class="login-label" for="good-description">Опишите товар:</label>
-	<textarea class="input-box login-input" rows="10" name="good-description" id="good-description" placeholder="В идеальном состоянии."></textarea>
+	<textarea class="input-box login-input" rows="10" name="good-description" id="good-description" placeholder="В идеальном состоянии."><?=isset($_POST['good-description']) ? $_POST['good-description'] : ""?></textarea>
 	<label class="login-label" for="good-initRate">Введите начальную ставку:</label>
-	<input class="input-box login-input" type="number" name="good-initRate" min="0" step="0.01" id="good-initRate" placeholder="6000" required>
+	<input class="input-box login-input" type="number" name="good-initRate" min="0" step="0.01" id="good-initRate" placeholder="6000" required <?=isset($_POST['good-initRate']) ? 'value="' . $_POST['good-initRate'] . '"' : ""?>>
 	<label class="login-label" for="good-date">Выберите срок проведения аукциона:</label>
 	<select class="input-box login-input" name="good-date" id="good-date">
 		<option value="12">12 часов</option>
