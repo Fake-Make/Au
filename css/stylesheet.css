@@ -156,6 +156,7 @@ h1 {
 }
 
 h2 {
+	font-weight: bold;
 	font-size: 18px;
 	margin: 10px 0;
 }
@@ -387,6 +388,7 @@ old version
 
 .product-image-box {
 	width: 45%;
+	margin: 0 auto;
 }
 
 .product-image {
@@ -394,8 +396,15 @@ old version
 }
 
 .product-description {
+	margin: 0 auto;
+	height: 100%;
 	width: 45%;
 	text-align: justify;
+	min-height: 350px;
+}
+
+.product-description__text {
+	flex-grow: 1;
 }
 
 .product-control {
@@ -425,6 +434,7 @@ old version
 	.product-description {
 		width: 90%;
 		margin: 15px auto;
+		min-height: 0;
 	}
 
 	.product-image-box {
@@ -462,16 +472,14 @@ old version
 	transition-duration: .5s;
 }
 
-
-
 .button:hover {
 	color: #000;
 	border-color: #000;
 	cursor: pointer;
 }
 
-.button__disabled,
-.button__disabled:hover {
+input.button[disabled],
+input.button[disabled]:hover {
 	color: #999;
 	border-color: #999;
 	background: #444;

@@ -1,25 +1,44 @@
+<?extract($data)?>
+<?//print_r($auction)
+	$ph = $auction['photo'];
+	$alt = "Фотография товара";
+	if(is_null($ph) || $ph === "NULL" || $ph === "") {
+		$ph = "img/box.png";
+		$alt = "Изображение отсутствует";
+	}
+	$auction['date'] = strtotime($auction['date']) - time();
+?>
 <h1 class="invisible">Просмотр аукциона</h1>
-<section class="flex-row auction-box auction-product">
+<section class="flex-row auction-box auction-product auction-timered">
 	<div class="flex-column product-image-box">
-		<h2>Компьютерная мышь bloody A4Tech</h2>
-		<img class="product-image" src="<?=$this->host?>/img/box.png" alt="product">
+		<h2><?=$auction['name']?></h2>
+		<img class="product-image" src="<?=$this->host?>/<?=$ph?>" alt="<?=$alt?>">
+		<p>Оставшееся время: <span class="auction-exp-time"><?=date("H:i:s", $auction['date'])?></span></p>
+		<p>Организатор: <?=$auction['ownerName']?></p>
+		<p class="auction-exp-time__timestamp" hidden><?=$item['date']?></p>
 	</div>
 	<section class="flex-column product-description">
-		<p>
-			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-		</p>
-		<p>
-			It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+		<p class="product-description__text">
+			<?=$auction['description']?>
 		</p>
 		<div class="flex-row product-control">
-			<p class="product-control__elem product-control__bet">Текущая ставка: <span>400</span>руб.</p>
-			<a class="button product-control__elem" href="<?=$this->host?>/dialog">Написать организатору</a>
+			<p class="product-control__elem product-control__bet">
+				<?if(is_null($auction['curRate'])):?>
+					Начальная ставка: <span style="color: #0d6; font-size: 20px; font-weight: bold; line-height: 25px;"><?=$auction['initRate']?>&#8381;</span>
+				<?else:?>
+					Текущая ставка: <span style="color: #4af; font-size: 20px; font-weight: bold; line-height: 25px;"><?=$auction['curRate']?>&#8381;</span>
+				<?endif?>	
+			</p>
+			
+			<a class="button product-control__elem" href="<?=$this->host?>/dialog/<?=$auction['ownerId']?>/<?=$user?>">Написать организатору</a>
 			<!--Если пользователь уже сделал ставку, то пусть топает домой-->
 			<form class="flex-row product-control__cost-form" action="auction.php">
 				<!--Добавить минимальное значение как $текущаяСтавка + $минимальныйШаг-->
-				<input class="input-box product-control__elem" type="number" placeholder="Ваша ставка">
+				<?$minRate = $auction['curRate'] ? $auction['curRate'] : $auction['initRate']?>
+				<?$minStep = $auction['initRate'] * 0.05?>
+				<input class="input-box product-control__elem" type="number" min="<?=$minRate + $minStep?>" step="0.5" value="<?=$minRate + $minStep?>" placeholder="Ваша ставка">
 				<!--Это же значение подставить в значение поля-->
-				<input class="button button__disabled product-control__elem" type="submit" value='Сделать ставку'>
+				<input class="button product-control__elem" type="submit" value="Сделать ставку" <?=$auction['ownerId'] === $user || is_null($user) ? "disabled" : ""?>>
 			</form>
 		</div>
 	</section>

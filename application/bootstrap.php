@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors','On');
+error_reporting('E_ERROR');
+
 // подключаем файлы ядра
 require_once 'core/config.php';
 require_once 'core/validator.php';

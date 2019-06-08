@@ -1,3 +1,43 @@
+function decTime(time) {
+  //Разбиение
+  var h = time.split(":")[0];
+  var m = time.split(":")[1];
+  var i = time.split(":")[2];
+  
+  // Функция для вычета одного поля
+  function dec (str) {
+    a = str[0];
+    b = str[1];
+    if(0 == b) {
+      if (a == 0)
+        return "59";
+      a--;
+      b = "9";
+    } else {
+      b--;
+    }
+    return a + b;
+  }
+  
+  function decH (str) {
+    if (+str > 10)
+      return str - 1;
+    else
+      return dec (str);
+  }
+  
+  // Логика вычитания
+  i = dec(i);
+  if(i === "59")
+    m = dec(m);
+    if(m === "59")
+      h = decH(h);
+      if(h === "59")
+        return "00:00:00"
+        
+  return h + ":" + m + ":" + i;
+}
+
 // Функция для исправления отображения флекс-бокса
 function flexFix() {
 	var w = $(window).width(), n;
@@ -19,16 +59,9 @@ function flexFix() {
 
 // Функция для изменения времени на табличках с таймерами
 function timers() {
-	$('.auction').each(function(){
-		var t = $(this).find('.auction-exp-time__timestamp').text();
-		t--;
-		var date = new Date(t * 1000);
-		var hours = date.getHours() - 7;
-		var minutes = "00" + date.getMinutes();
-		var seconds = "00" + date.getSeconds();
-		var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-		$(this).find('.auction-exp-time').text(formattedTime);
-		$(this).find('.auction-exp-time__timestamp').text(t);
+	$('.auction-timered').each(function(){
+		var t = $(this).find('.auction-exp-time').text();
+		$(this).find('.auction-exp-time').text(decTime(t));
 	});
 }
 
@@ -44,7 +77,10 @@ function paginatorFix() {
 		$('.paginator__elem_next a').html('&#9658;').addClass('paginator__arrow paginator__arrow_right');
 	}	
 }
+
+// Установка таймера для вычисления срока окончания аукционов
 setInterval(timers, 1000);
+
 // Назначение элементам событий после загрузки документа
 $(function () {
 	// Починка флекс-отображения пагинатора и аукционов при загрузке страницы

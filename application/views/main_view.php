@@ -11,7 +11,7 @@
 					$item['photo'] = "photos/box.png";
 				$item['date'] = strtotime($item['date']) - time();
 			?>
-			<li class="flex-column auction auction-box">
+			<li class="flex-column auction auction-box auction-timered">
 				<a class="flex-column auction__link" href="<?=$this->host?>/auction/id=<?=$item['id']?>">
 					<div class="flex-column auction__image-container"><img class="auction-image__listed" src="<?=$this->host?>/<?=$item['photo']?>" alt="auction_image" width="100%"></div>
 					<div class="auction__name"><p><?=$item['name']?></p></div>
@@ -29,5 +29,4 @@
 		<?endforeach?>
 	</ul>
 	<?=makePaginator(PAGINATOR_ELEMENTS, $page, $maxPages)?>
-	<?//У нас теперь есть $maxPages?>
 <?endif?>

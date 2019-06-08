@@ -58,7 +58,8 @@ class dataBase {
 		$sqlReq = "SELECT id, name, initRate, curRate, date, photo FROM auctions ORDER BY date " .
 			"LIMIT " . ($offset ? "$offset, " : "") . $size;
 
-		return mysqli_fetch_all(mysqli_query($this->db, $sqlReq), MYSQLI_ASSOC);
+		$sqlRes = mysqli_query($this->db, $sqlReq);
+		return mysqli_fetch_all($sqlRes, MYSQLI_ASSOC);
 	}
 
 	// Функция для получения максимального количества страниц
@@ -69,10 +70,27 @@ class dataBase {
 		return ceil($rawNumber / $size);
 	}
 
+	// Функция для получения из БД данных об аукционе по его id
+	function getAuctionById($id) {
+		$id = $this->validSQL($id);
+		$sqlReq = "SELECT a.name, a.description, a.photo, a.date, a.initRate, a.curRate, u.name ownerName, a.ownerId
+			FROM auctions AS a JOIN users AS u ON a.ownerId = u.id
+			WHERE a.id = '$id';";
+		$sqlRes = mysqli_query($this->db, $sqlReq);
+		return mysqli_fetch_assoc($sqlRes);
+	}
+
 	// Функция для получения из БД пользовательского хэша пароля по его логину
 	function getUserHash($login) {
 		$login = $this->validSQL($login);
 		$sqlReq = "SELECT passHash from users WHERE login = '$login';";
+		return mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"];
+	}
+
+	// Функция для получения из БД пользовательского id по его логину
+	function getUserIdByLogin($login) {
+		$login = $this->validSQL($login);
+		$sqlReq = "SELECT id from users WHERE login = '$login';";
 		return mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"];
 	}
 
@@ -81,6 +99,9 @@ class dataBase {
 		mysqli_close($this->db);
 	}
 }
+
 // Для тестирования запросов прямо в файле класса
 //$a = new dataBase;
-//print_r($a->getAuctionsList(18, 1));// ? 1 : 0;
+//print_r($a->getAuctionById(13));// ? 1 : 0;
+//$a->getAuctionsList(13, 1);
+//print_r($a->getAuctionsList(1,3));
