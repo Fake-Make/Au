@@ -2,7 +2,8 @@
 
 class Controller_Main extends Controller {
 	function action_index() {
-		$this->action_page();
+		$host = preg_replace("!/au\.ru/.*!", "/au.ru", strtolower($_SERVER['REQUEST_URI']));
+		header("Location: $host/main/page=1");
 	}
 
 	function action_page() {
@@ -12,6 +13,8 @@ class Controller_Main extends Controller {
 		// Сначала нужно получить количество элементов и номер страницы
 		$model = new Model_Main();
 		$data['aucs'] = $model->getAuctions(MAX_GOODS_ON_PAGE, $page);
+		$data['maxPages'] = $model->getMaxPages(MAX_GOODS_ON_PAGE);
+		$data['page'] = $page;
 		if(!is_array($data['aucs']))
 			$data["auctions_status"] = "empty";
 		else

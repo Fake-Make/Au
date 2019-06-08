@@ -61,6 +61,14 @@ class dataBase {
 		return mysqli_fetch_all(mysqli_query($this->db, $sqlReq), MYSQLI_ASSOC);
 	}
 
+	// Функция для получения максимального количества страниц
+	function getMaxPages($size) {
+		$size = $this->validSQL($size);
+		$sqlReq = "SELECT count(*) FROM auctions";
+		$rawNumber = mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"];
+		return ceil($rawNumber / $size);
+	}
+
 	// Функция для получения из БД пользовательского хэша пароля по его логину
 	function getUserHash($login) {
 		$login = $this->validSQL($login);

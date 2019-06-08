@@ -3,9 +3,11 @@
 require_once 'core/config.php';
 require_once 'core/validator.php';
 require_once 'core/database.php';
+require_once 'core/paginator.php';
 require_once 'core/model.php';
 require_once 'core/view.php';
 require_once 'core/controller.php';
+
 
 /*
 Здесь обычно подключаются дополнительные модули, реализующие различный функционал:

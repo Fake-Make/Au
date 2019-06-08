@@ -34,7 +34,7 @@ function timers() {
 
 // Функция для смены надписей у пагинатора на стрелки
 function paginatorFix() {
-	if($(window).width() > phoneSize) {
+	if($(window).width() > 480) {
 		// Появление текста у пагинатора
 		$('.paginator__elem_prev a').text('Предыдущая страница').removeClass('paginator__arrow paginator__arrow_left');
 		$('.paginator__elem_next a').text('Следующая страница').removeClass('paginator__arrow paginator__arrow_right');
@@ -48,12 +48,12 @@ setInterval(timers, 1000);
 // Назначение элементам событий после загрузки документа
 $(function () {
 	// Починка флекс-отображения пагинатора и аукционов при загрузке страницы
-	//paginatorFix();
+	paginatorFix();
 	flexFix();
 
 	// Настройка отображения при изменении размеров экрана
 	$(window).resize(function () {
-		//paginatorFix();
+		paginatorFix();
 		flexFix();
 	});
 });

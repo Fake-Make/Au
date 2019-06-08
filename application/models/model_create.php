@@ -6,5 +6,4 @@ class Model_CreateAuction extends Model {
 		$dt = time() + $date * 60 * 60;
 		return $this->db->addAuction($name, $description, $initRate, $dt, $user, $photo);
 	}
-
 }
