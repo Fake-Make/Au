@@ -55,7 +55,8 @@ class dataBase {
 		$page = $this->validSQL($page);
 		$offset = ($page - 1) * $size;
 
-		$sqlReq = "SELECT id, name, initRate, curRate, date, photo FROM auctions ORDER BY date " .
+		$sqlReq = "SELECT id, name, initRate, curRate, date, photo FROM auctions
+		WHERE status='active' ORDER BY date " .
 			"LIMIT " . ($offset ? "$offset, " : "") . $size;
 
 		$sqlRes = mysqli_query($this->db, $sqlReq);
@@ -73,7 +74,7 @@ class dataBase {
 	// Функция для получения из БД данных об аукционе по его id
 	function getAuctionById($id) {
 		$id = $this->validSQL($id);
-		$sqlReq = "SELECT a.name, a.description, a.photo, a.date, a.initRate, a.curRate, u.name ownerName, a.ownerId
+		$sqlReq = "SELECT a.name, a.description, a.photo, a.date, a.initRate, a.curRate, a.status, u.name ownerName, a.ownerId
 			FROM auctions AS a JOIN users AS u ON a.ownerId = u.id
 			WHERE a.id = '$id';";
 		$sqlRes = mysqli_query($this->db, $sqlReq);

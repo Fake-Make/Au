@@ -26,6 +26,7 @@ CREATE TABLE auctions (
 	initRate		FLOAT NOT NULL,
 	curRate			FLOAT,
 	ownerId			INT NOT NULL,
+	status			ENUM('active', 'inactive') NOT NULL DEFAULT 'active',
 	PRIMARY KEY (id),
 	FOREIGN KEY (ownerId) REFERENCES users (id) ON DELETE CASCADE
 );

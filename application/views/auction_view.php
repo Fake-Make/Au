@@ -32,11 +32,9 @@
 			
 			<a class="button product-control__elem" href="<?=$this->host?>/dialog/<?=$auction['ownerId']?>/<?=$user?>">Написать организатору</a>
 			<!--Если пользователь уже сделал ставку, то пусть топает домой-->
-			<form class="flex-row product-control__cost-form" action="auction.php">
+			<form class="flex-row product-control__cost-form" method="POST" action="<?=$_SERVER['REQUEST_URI']?>">
 				<!--Добавить минимальное значение как $текущаяСтавка + $минимальныйШаг-->
-				<?$minRate = $auction['curRate'] ? $auction['curRate'] : $auction['initRate']?>
-				<?$minStep = $auction['initRate'] * 0.05?>
-				<input class="input-box product-control__elem" type="number" min="<?=$minRate + $minStep?>" step="0.5" value="<?=$minRate + $minStep?>" placeholder="Ваша ставка">
+				<input name="rise" class="input-box product-control__elem" type="number" min="<?=$minRate + $minStep?>" step="0.5" value="<?=$minRate + $minStep?>" placeholder="Ваша ставка">
 				<!--Это же значение подставить в значение поля-->
 				<input class="button product-control__elem" type="submit" value="Сделать ставку" <?=$auction['ownerId'] === $user || is_null($user) ? "disabled" : ""?>>
 			</form>
