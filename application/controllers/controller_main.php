@@ -2,8 +2,7 @@
 
 class Controller_Main extends Controller {
 	function action_index() {
-		$host = preg_replace("!/au\.ru/.*!", "/au.ru", strtolower($_SERVER['REQUEST_URI']));
-		header("Location: $host/main/page=1");
+		header("Location: $this->host/main/page=1");
 	}
 
 	function action_page() {

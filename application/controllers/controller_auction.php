@@ -3,8 +3,7 @@
 class Controller_auction extends Controller {
 	// Нельзя запросить просто аукцион
 	function action_index()	{
-		$host = preg_replace("!/au\.ru/.*!", "/au.ru", strtolower($_SERVER['REQUEST_URI']));
-		header("Location: $host/main/page=1");
+		Route::ErrorPage404();
 	}
 
 	// Получаем аукцион по его уникальному идентификатору
@@ -20,10 +19,9 @@ class Controller_auction extends Controller {
 			$auction = $model->getAuctionById($id, $login);
 		else
 			$auction = $model->getAuctionById($id);
-		if(false === $auction = $model->getAuctionById($id, $login)) {
-			$host = preg_replace("!/au\.ru/.*!", "/au.ru", strtolower($_SERVER['REQUEST_URI']));
-			header("Location: $host/404");
-		}
+		if(false === $auction = $model->getAuctionById($id, $login))
+			Route::ErrorPage404();
+
 		$data['auction'] = $auction['0'];
 		$data['user'] = $auction['1'];
 		// Узнать id аукциона и пользователя
