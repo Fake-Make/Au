@@ -2,7 +2,10 @@
 
 class Controller_personal extends Controller {
 	function action_index()	{
-		$this->action_active();
+		if(!isset($_SESSION['user']))
+			Route::ErrorPage404();
+		else			
+			$this->action_active();
 	}
 
 	function action_active()	{
