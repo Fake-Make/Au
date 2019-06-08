@@ -1,9 +1,10 @@
-<?$tab=empty($_GET["tab"]) ? 1 : $_GET["tab"]?>
+<?extract($data)?>
+<?$tab?>
 <h1 class="invisible">Страница пользователя</h1>
 <header class="flex-row">
 	<nav class="flex-column auction-box personal-nav">
 		<ul class="flex-row tabs">
-			<li class="tab"><a href="<?=$this->host?>/personal">Участие в аукционах</a></li>
+			<li class="tab"><a href="<?=$this->host?>/personal/active">Участие в аукционах</a></li>
 			<li class="tab"><a href="<?=$this->host?>/personal/created">Проведение аукционов</a></li>
 			<li class="tab"><a href="<?=$this->host?>/personal/dialogs">Диалоги</a></li>
 			<li class="tab"><a href="<?=$this->host?>/create">Организовать аукцион</a></li>

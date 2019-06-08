@@ -289,6 +289,7 @@ footer {
 
 .auctions {
 	padding: 20px 0;
+	width: 100%;
 }
 
 .auction-box {
@@ -697,16 +698,16 @@ input.button[disabled]:hover {
 .dialog__user-image {
 	width: 50px;
 	height: 50px;
-	border: 1px solid #000;
-	box-shadow: 0 0 10px 0 #000;
+	border: 1px solid #666;
+	box-shadow: 0 0 10px 0 #666;
 	margin-right: 20px;
 	transition-duration: .5s;
 }
 
 .dialog-preview__message {
 	width: 100%;
-	color: #fff;
-	background: #222;
+	color: #000;
+	background: #ddd;
 	padding: 10px;
 	border-radius: 5px;
 }
