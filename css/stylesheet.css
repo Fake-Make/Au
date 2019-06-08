@@ -757,7 +757,42 @@ old version
 	text-align: center;
 }
 
-.invisible {
+.hidden:hover {
 	transform: none;
 	box-shadow: none;
+	cursor: auto;
+}
+
+.paginator {
+	max-width: 500px;
+	width: 100%;
+	margin: 20px 40px;
+}
+
+.paginator__elem_current {
+	border: 1px solid #eee;
+	border-radius: 40px;
+	padding: 5px 10px;
+	box-shadow: 0 0 5px 0 #eee;
+}
+
+.paginator__arrow_right,
+.paginator__arrow_left {
+	border: 1px solid #eee;
+	border-radius: 40px;
+	box-shadow: 0 0 5px 0 #eee;
+	padding: 5px 5px;
+	color: #000;
+}
+
+.paginator__arrow_right:hover,
+.paginator__arrow_left:hover {
+	color: #09f;
+	background: #eef;
+}
+
+@media (max-width: 450px) {	
+	.paginator {
+		width: 90%;
+	}
 }

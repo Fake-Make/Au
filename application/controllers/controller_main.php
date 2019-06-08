@@ -12,8 +12,11 @@ class Controller_Main extends Controller {
 		$page = validator::validNaturalNumber($matches[1]);
 		// Сначала нужно получить количество элементов и номер страницы
 		$model = new Model_Main();
-		$data['aucs'] = $model->getAuctions(MAX_GOODS_ON_PAGE, $page);
+		
 		$data['maxPages'] = $model->getMaxPages(MAX_GOODS_ON_PAGE);
+		if($data['maxPages'] < $page)
+			$page = $data['maxPages'];
+		$data['aucs'] = $model->getAuctions(MAX_GOODS_ON_PAGE, $page);
 		$data['page'] = $page;
 		if(!is_array($data['aucs']))
 			$data["auctions_status"] = "empty";

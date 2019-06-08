@@ -20,7 +20,7 @@ function flexFix() {
 // Функция для изменения времени на табличках с таймерами
 function timers() {
 	$('.auction').each(function(){
-		var t = $(this).find('.auction-exp-time__timestamp')[0].textContent;
+		var t = $(this).find('.auction-exp-time__timestamp').text();
 		t--;
 		var date = new Date(t * 1000);
 		var hours = date.getHours() - 7;
@@ -34,14 +34,14 @@ function timers() {
 
 // Функция для смены надписей у пагинатора на стрелки
 function paginatorFix() {
-	if($(window).width() > 480) {
+	if($(window).width() > 700) {
 		// Появление текста у пагинатора
 		$('.paginator__elem_prev a').text('Предыдущая страница').removeClass('paginator__arrow paginator__arrow_left');
 		$('.paginator__elem_next a').text('Следующая страница').removeClass('paginator__arrow paginator__arrow_right');
 	} else {
 		// Скрытие лишнего текста у пагинатора
-		$('.paginator__elem_prev a').text('  ').addClass('paginator__arrow paginator__arrow_left');
-		$('.paginator__elem_next a').text('  ').addClass('paginator__arrow paginator__arrow_right');
+		$('.paginator__elem_prev a').html('&#9668;').addClass('paginator__arrow paginator__arrow_left');
+		$('.paginator__elem_next a').html('&#9658;').addClass('paginator__arrow paginator__arrow_right');
 	}	
 }
 setInterval(timers, 1000);

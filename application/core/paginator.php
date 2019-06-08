@@ -6,7 +6,7 @@
 		$shift = ($show - 1) / 2;
 		$paginatorHtml = "";
 		$paginatorHtml .=
-			'<ul class="paginator catalog-page__paginator">' .
+			'<ul class="flex-row paginator catalog-page__paginator">' .
 				'<li class="paginator__elem paginator__elem_prev">'
 					. ($cur != 1 ? '<a href="' . preg_replace("!page=(\d+)!", "page=" . ($cur - 1), $thisScript) .
 					'" class="paginator__link">Предыдущая страница</a>' : '') .
