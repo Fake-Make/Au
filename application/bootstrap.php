@@ -1,5 +1,6 @@
 <?php
 // подключаем файлы ядра
+require_once 'core/config.php';
 require_once 'core/validator.php';
 require_once 'core/database.php';
 require_once 'core/model.php';

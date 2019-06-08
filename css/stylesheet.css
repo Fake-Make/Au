@@ -342,7 +342,8 @@ old version
 }
 
 .auction-image__listed {
-	align-self: center;
+	margin: 0;
+	width: 100%;
 }
 
 .image-logo {
@@ -738,3 +739,25 @@ old version
 	}
 }
 
+.auction__image-container {
+	width: 100%;
+	height: 150px;
+	margin: 0 0 15px 0;
+	overflow: hidden;
+}
+
+.auction__price {
+	height: 35px;
+}
+
+.auction__name {
+	width: 100%;
+	height: 50px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.invisible {
+	transform: none;
+	box-shadow: none;
+}

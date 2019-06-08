@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="css/stylesheet.css">
 	<link rel="shortcut icon" href="img/favicon.png" type="image/png">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="js/script.js"></script>
 	<title>Au - Площадка Интернет-Аукционов</title>
 </head>
 <body>
