@@ -9,7 +9,7 @@ class Route {
 	static function start() {
 		$db = new dataBase();
 		// контроллер и действие по умолчанию
-		$controller_name = 'Main';
+		$controller_name = 'main';
 		$action_name = 'index';
 
 		$host = preg_replace("!/au\.ru/.*!", "/au.ru", strtolower($_SERVER['REQUEST_URI']));
@@ -22,7 +22,7 @@ class Route {
 		
 		// получаем имя экшена
 		if ( !empty($routes[2]) ) {
-			$action_name = $routes[2];
+			$action_name = preg_replace("!=.*!", "", $routes[2]);
 		}
 
 		// добавляем префиксы
@@ -35,7 +35,7 @@ class Route {
 		echo "Model: $model_name <br>";
 		echo "Controller: $controller_name <br>";
 		echo "Action: $action_name <br>";
-		*/		
+		*/
 
 		// подцепляем файл с классом модели (файла модели может и не быть)
 

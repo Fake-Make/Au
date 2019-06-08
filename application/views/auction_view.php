@@ -2,7 +2,7 @@
 <section class="flex-row auction-box auction-product">
 	<div class="flex-column product-image-box">
 		<h2>Компьютерная мышь bloody A4Tech</h2>
-		<img class="product-image" src="img/box.png" alt="product">
+		<img class="product-image" src="<?=$this->host?>/img/box.png" alt="product">
 	</div>
 	<section class="flex-column product-description">
 		<p>

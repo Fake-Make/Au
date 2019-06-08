@@ -14,7 +14,7 @@
 	<ul class="flex-row auctions">
 		<li class="flex-column auction auction-box">
 			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
-				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
+				<img class="auction-image__listed" src="<?=$this->host?>/img/box.png" alt="auction" width="100px">
 				<p>Клавиатура Logitech</p>
 				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
 				<p>Оставшееся время: <span>05:49:53</span></p>
@@ -65,7 +65,7 @@
 	<ul class="auction-box dialog-list">
 		<li class="dialog-list__item">
 			<a class="flex-row dialog-list__link" href="<?=$this->host?>/dialog">
-				<img class="user-image dialog__user-image" src="img/box.png" alt="Фото пользователя">
+				<img class="user-image dialog__user-image" src="<?=$this->host?>/img/box.png" alt="Фото пользователя">
 				<div class="flex-row dialog-preview">
 					<span class="dialog-preview__name">Another User</span>
 					<span class="dialog-preview__time">22:41</span>
@@ -188,7 +188,7 @@
 	<ul class="flex-row auctions">
 		<li class="flex-column auction auction-box">
 			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
-				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
+				<img class="auction-image__listed" src="<?=$this->host?>/img/box.png" alt="auction" width="100px">
 				<p>Клавиатура Logitech</p>
 				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
 				<p>Оставшееся время: <span>05:49:53</span></p>

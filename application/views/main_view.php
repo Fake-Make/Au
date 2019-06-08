@@ -13,7 +13,7 @@
 			?>
 			<li class="flex-column auction auction-box">
 				<a class="flex-column auction__link" href="<?=$this->host?>/auction/<?=$item['id']?>">
-					<div class="flex-column auction__image-container"><img class="auction-image__listed" src="<?=$item['photo']?>" alt="auction_image" width="100%"></div>
+					<div class="flex-column auction__image-container"><img class="auction-image__listed" src="<?=$this->host?>/<?=$item['photo']?>" alt="auction_image" width="100%"></div>
 					<div class="auction__name"><p><?=$item['name']?></p></div>
 					<div class="auction__price">
 						<?if(is_null($item['curRate'])):?>
