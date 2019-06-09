@@ -479,6 +479,8 @@ old version
 	cursor: pointer;
 }
 
+.disabled,
+.disabled:hover,
 input.button[disabled],
 input.button[disabled]:hover {
 	color: #999;
