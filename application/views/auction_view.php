@@ -36,7 +36,7 @@
 			<?if($auction['ownerId'] === $user || is_null($user)):?>
 				<span class="button product-control__elem disabled">Написать организатору</span>
 			<?else:?>
-				<a class="button product-control__elem" href="<?=$this->host?>/dialog/<?=$auction['ownerId']?>/<?=$user?>">Написать организатору</a>
+				<a class="button product-control__elem" href="<?=$this->host?>/dialog/person=<?=$auction['ownerId']?>/user=<?=$user?>">Написать организатору</a>
 			<?endif?>
 			<!--Если пользователь уже сделал ставку, то пусть топает домой-->
 			<form class="flex-row product-control__cost-form" method="POST" action="<?=$_SERVER['REQUEST_URI']?>">

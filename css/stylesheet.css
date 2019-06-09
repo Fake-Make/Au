@@ -577,6 +577,7 @@ input.button[disabled]:hover {
 .dialog-window {
 	width: 100%;
 	flex-grow: 1;
+	margin-bottom: 25px;
 }
 
 .dialog-messages {

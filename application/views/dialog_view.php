@@ -1,19 +1,26 @@
-<!--Если не залогинен, отправляем на вход-->
-<h1>Диалог с пользователем <a href="<?=$this->host?>/personal">Антон Иванович</a></h1>
+<?extract($data)?>
+<h1>Диалог с пользователем <a href="<?=$this->host?>/personal/id=<?=$person?>"><?=$personName?></a></h1>
 <section class="flex-column auction-box dialog-window">
-	<ul class="dialog-messages">
-		<li class="message message__sent">
-			Привет. Я хотел бы спросить, как долго работала ваша мышь?
-		</li>
-		<li class="message message__recieved">
-			Привет. Не очень долго. А что?
-		</li>
-		<li class="message message__sent">
-			А вот ничего. Не хочу теперь вашу мышь покупать.
-		</li>
-	</ul>
-	<form class="flex-row dialog-control" action="<?=$this->host?>/dialog">
+	<?if("Not exists" === $dialog_status):?>
+		<p style="color: #09f">В диалоге ещё нет сообщений.</p>
+	<?else:?>
+		<ul class="dialog-messages">
+			<!--Как только появится хотя бы один диалог, прикрутить его просмотр-->
+			<?foreach($chat as $item):?>
+				<?if($item['author'] === $user):?>
+					<li class="message message__sent">
+				<?else:?>
+					<li class="message message__recieved">
+				<?endif?>
+				<?=$item['text']?>
+				</li>
+			<?endforeach?>
+		</ul>
+	<?endif?>	
+	<form class="flex-row dialog-control" action="<?=$this->host?>/dialog/send">
 		<textarea class="input-box dialog-input" name="dialog-message" placeholder="Написать сообщение"></textarea>
 		<input class="button dialog-send" type="submit" value="Отправить">
+		<!--Продумать-->
+		<input hidden name="person" value="<?=$person?>">
 	</form>
 </section>

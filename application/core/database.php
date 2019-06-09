@@ -160,6 +160,19 @@ class dataBase {
 		return mysqli_query($this->db, $sqlReq);
 	}
 
+	// Функция для получения ID диалога по его участникам
+	function getDialogByMembers($person, $user) {
+		$person = $this->validSQL($person);
+		$user = $this->validSQL($user);
+
+		$sqlReq = 
+			"SELECT id FROM dialogs
+			WHERE (initiator='$person' AND recipient='$user')
+			OR (initiator='$user' AND recipient='$person') LIMIT 1";
+
+		return mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"];
+	}
+
 	// Функция для получения списка диалогов пользователя
 	function getDialogsById($user) {
 		$user = $this->validSQL($user);
@@ -220,6 +233,13 @@ class dataBase {
 	function getUserIdByLogin($login) {
 		$login = $this->validSQL($login);
 		$sqlReq = "SELECT id from users WHERE login = '$login';";
+		return mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"];
+	}
+
+	// Функция для получения из БД имени пользователя по его id
+	function getUserNameById($user) {
+		$user = $this->validSQL($user);
+		$sqlReq = "SELECT name from users WHERE id = '$user';";
 		return mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"];
 	}
 
