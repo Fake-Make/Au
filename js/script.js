@@ -28,15 +28,18 @@ function decTime(time) {
   
   // Логика вычитания
   i = dec(i);
-  if(i === "59")
+  if(i === "59") {
     m = dec(m);
-    if(m === "59")
+    if(m === "59") {
       h = decH(h);
       if(h === "59")
         return "00:00:00"
+    }
+  }
         
   return h + ":" + m + ":" + i;
 }
+console.log(decTime("13:59:10"));
 
 // Функция для исправления отображения флекс-бокса
 function flexFix() {
