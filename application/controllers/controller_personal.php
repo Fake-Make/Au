@@ -5,7 +5,7 @@ class Controller_personal extends Controller {
 		if(!isset($_SESSION['user']))
 			Route::ErrorPage404();
 		else
-			header("Location: $this->host/personal/created/page=1");
+			header("Location: $this->host/personal/active/page=1");
 	}
 
 	function action_active()	{
@@ -39,15 +39,27 @@ class Controller_personal extends Controller {
 
 		if(!is_array($data['aucs']) || empty($data['aucs']))
 			$data["auctions_status"] = "empty";
-		else
-			$data["auctions_status"] = "got";
 
 		// 5. Отображение страницы
 		$this->view->generate('personal_view.php', 'template_view.php', $data);
 	}
 
 	function action_dialogs()	{
-		$data['tab'] = "dialogs";
+		$model = new Model_Personal();
+		$tab = "dialogs";
+
+		// 1. Если нет пользователя, то как мы тут оказались?
+		if(!($user = $model->getUserIdByLogin(validator::validAnyString($_SESSION['user']))))
+			Route::ErrorPage404();
+
+		// 2. Запрашиваем данные для страницы
+		$data['dials'] = $model->getDialogsById($user);
+		$data['tab'] = $tab;
+
+		if(!is_array($data['dials']) || empty($data['dials']))
+			$data["dialogs_status"] = "empty";
+
+		// 3. Отображение данных
 		$this->view->generate('personal_view.php', 'template_view.php', $data);
 	}
 }

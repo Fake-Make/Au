@@ -12,4 +12,8 @@ class Model_Personal extends Model {
 	function getUserIdByLogin($login) {
 		return $this->db->getUserIdByLogin($login);
 	}
+
+	function getDialogsById($user) {
+		return $this->db->getDialogsById($user);
+	}
 }

@@ -20,7 +20,7 @@
 							<?if(!empty($_SESSION['user'])):?>
 								<div class="flex-row">
 									<a href="<?=$this->host?>/logout"><img src="<?=$this->host?>/img/exit.png" alt="Выход" width="20px" class="exit-image"></a>
-									<a class="flex-row" href="<?=$this->host?>/personal/created/page=1"><?=validator::validAnyString($_SESSION['user'])?><img class="user-image" src="<?=$this->host?>/img/box.png" alt="Фото пользователя"></a>
+									<a class="flex-row" href="<?=$this->host?>/personal/active/page=1"><?=validator::validAnyString($_SESSION['user'])?><img class="user-image" src="<?=$this->host?>/img/box.png" alt="Фото пользователя"></a>
 								</div>							
 							<?else:?>
 								<a href="<?=$this->host?>/login">Войти</a> или <a href="<?=$this->host?>/registration">зарегистрироваться</a>

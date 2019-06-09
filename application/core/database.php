@@ -149,6 +149,7 @@ class dataBase {
 		return mysqli_fetch_all($sqlRes, MYSQLI_ASSOC);
 	}
 
+	// Функция для занесения аукциона в список активных аукционов пользователя
 	function addAuctionToUser($auction, $user) {
 		$auction = $this->validSQL($auction);
 		$user = $this->validSQL($user);
@@ -157,6 +158,26 @@ class dataBase {
 			VALUES ('$auction')";
 
 		return mysqli_query($this->db, $sqlReq);
+	}
+
+	// Функция для получения списка диалогов пользователя
+	function getDialogsById($user) {
+		$user = $this->validSQL($user);
+		$sqlReq = 
+			"SELECT d.id, d.member, d.lastMessage, d.lastUpdate, u.photo, u.name
+			FROM users AS u INNER JOIN
+				(SELECT id, recipient member, lastMessage, lastUpdate
+				FROM dialogs
+				WHERE initiator='$user'
+					UNION
+				SELECT id, initiator member, lastMessage, lastUpdate
+				FROM dialogs
+				WHERE recipient='$user') AS d
+			ON u.id=d.member
+			ORDER BY lastUpdate";
+
+		$sqlRes = mysqli_query($this->db, $sqlReq);
+		return mysqli_fetch_all($sqlRes, MYSQLI_ASSOC);
 	}
 
 	// Функция для получения максимального количества страниц

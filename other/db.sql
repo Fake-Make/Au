@@ -38,15 +38,8 @@ CREATE TABLE dialogs (
 	initiator		INT,
 	recipient		INT NOT NULL,
 	lastMessage	TEXT NOT NULL,
+	lastUpdate	TIMESTAMP NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (initiator) REFERENCES users (id) ON DELETE CASCADE,
 	FOREIGN KEY (recipient) REFERENCES users (id) ON DELETE CASCADE
 );
-
-CREATE TABLE user_1 (
-	id INT NOT NULL AUTO_INCREMENT,
-	auctionId INT NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (auctionId) REFERENCES auctions (id) ON DELETE CASCADE,
-	UNIQUE KEY ix_auctionId (auctionId)
-)
