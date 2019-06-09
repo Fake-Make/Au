@@ -18,7 +18,7 @@
 						<li class="page-nav__item"><a class="image-logo" href="<?=$this->host?>/"><img src="<?=$this->host?>/img/logo.png" alt="Аукционы" height="30px"></a></li>
 						<li class="page-nav__item">
 							<?if(!empty($_SESSION['user'])):?>
-								<a class="flex-row" href="<?=$this->host?>/personal"><?=validator::validAnyString($_SESSION['user'])?><img class="user-image" src="<?=$this->host?>/img/box.png" alt="Фото пользователя"></a>
+								<a class="flex-row" href="<?=$this->host?>/personal/created/page=1"><?=validator::validAnyString($_SESSION['user'])?><img class="user-image" src="<?=$this->host?>/img/box.png" alt="Фото пользователя"></a>
 							<?else:?>
 								<a href="<?=$this->host?>/login">Войти</a> или <a href="<?=$this->host?>/registration">зарегистрироваться</a>
 							<?endif?>

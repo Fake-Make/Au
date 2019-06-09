@@ -4,17 +4,45 @@ class Controller_personal extends Controller {
 	function action_index()	{
 		if(!isset($_SESSION['user']))
 			Route::ErrorPage404();
-		else			
-			$this->action_active();
+		else
+			header("Location: <?=$this->host?>/personal/created/page=1");
 	}
 
 	function action_active()	{
-		$data['tab'] = "active";
-		$this->view->generate('personal_view.php', 'template_view.php', $data);
+		$this->makeAuctionsList('active');
 	}
 
 	function action_created()	{
-		$data['tab'] = "created";
+		$this->makeAuctionsList('created');
+	}
+
+	function makeAuctionsList($tab) {
+		$model = new Model_Personal();
+		// 1. Если нет пользователя, то как мы тут оказались?
+		if(!($user = $model->getUserIdByLogin(validator::validAnyString($_SESSION['user']))))
+			Route::ErrorPage404();
+
+		// 2. Нужно знать, сколько всего страниц: для пагинатора и валидации текущей
+		$maxPages = $model->getMaxPagesForPersonal(MAX_GOODS_ON_PAGE, $user, $tab);
+
+		// 3. Получаем номер текущей страницы и валидируем его
+		preg_match("!page=(\d+)!", $_SERVER['REQUEST_URI'], $matches);
+		$page = validator::validNaturalNumber($matches[1]);
+		if($maxPages < $page)
+			$page = validator::validNaturalNumber($maxPages);
+
+		// 4. Запрашиваем данные для страницы
+		$data['aucs'] = $model->getPersonalAuctions(MAX_GOODS_ON_PAGE, $page, $user, $tab);
+		$data['tab'] = $tab;
+		$data['page'] = $page;
+		$data['maxPages'] = $maxPages;
+
+		if(!is_array($data['aucs']) || empty($data['aucs']))
+			$data["auctions_status"] = "empty";
+		else
+			$data["auctions_status"] = "got";
+
+		// 5. Отображение страницы
 		$this->view->generate('personal_view.php', 'template_view.php', $data);
 	}
 

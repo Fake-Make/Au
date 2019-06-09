@@ -654,12 +654,17 @@ input.button[disabled]:hover {
 	border: none;
 }
 
+.active {
+	background: rgba(0,0,0,0.1);
+}
+
 .dialog-list {
 	display: block;
 	width: 100%;
 	box-sizing: border-box;
 	max-height: 600px;
 	overflow-y: scroll;
+	margin-top: 20px;
 }
 
 .dialog-list__item {
@@ -768,11 +773,15 @@ input.button[disabled]:hover {
 	text-align: center;
 }
 
-.hidden:hover {
+.hidden {
+	visibility: hidden;
+}
+
+/*.hidden:hover {
 	transform: none;
 	box-shadow: none;
 	cursor: auto;
-}
+} */
 
 .paginator {
 	max-width: 500px;

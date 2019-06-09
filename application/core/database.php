@@ -101,10 +101,39 @@ class dataBase {
 		return mysqli_fetch_all($sqlRes, MYSQLI_ASSOC);
 	}
 
+	// Получения списка персональных аукционов: организатора или участника
+	function getPersonalAuctions($size, $page, $user, $tab) {
+		$size = $this->validSQL($size);
+		$page = $this->validSQL($page);
+		$user = $this->validSQL($user);
+		$offset = ($page - 1) * $size;
+
+		if($tab === 'created')
+			$sqlReq = "SELECT id, name, initRate, curRate, date, photo FROM auctions
+			WHERE status='active' AND ownerId='$user' ORDER BY date " .
+				"LIMIT " . ($offset ? "$offset, " : "") . $size;
+		if($tab === 'active')
+			$sqlReq = "";
+
+		$sqlRes = mysqli_query($this->db, $sqlReq);
+		return mysqli_fetch_all($sqlRes, MYSQLI_ASSOC);
+	}
+
 	// Функция для получения максимального количества страниц
 	function getMaxPages($size) {
 		$size = $this->validSQL($size);
 		$sqlReq = "SELECT count(*) FROM auctions";
+		$rawNumber = mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"];
+		return ceil($rawNumber / $size);
+	}
+
+	// Функция для получения максимального количества страниц
+	function getMaxPagesForPersonal($size, $user, $tab) {
+		$user = $this->validSQL($user);
+		if($tab === 'created')
+			$sqlReq = "SELECT count(*) FROM auctions WHERE ownerId='$user'";
+		if($tab === 'active')
+			$sqlReq = "";
 		$rawNumber = mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"];
 		return ceil($rawNumber / $size);
 	}
@@ -141,6 +170,6 @@ class dataBase {
 
 // Для тестирования запросов прямо в файле класса
 //$a = new dataBase;
-//print_r($a->getAuctionById(13));// ? 1 : 0;
+//print_r($a->getPersonalAuctions(3, 1, 1, 'created'));// ? 1 : 0;
 //$a->getAuctionsList(13, 1);
 //print_r($a->getAuctionsList(1,3));

@@ -57,7 +57,7 @@ function flexFix() {
 	$('.auction.hidden').remove();
 	// Если количество элементов не кратно n, то дополняется до кратности n
 	while ($('ul.auctions').children().length % n)
-		$('ul.auctions').append('<li class="auction hidden"></li>');
+		$('ul.auctions').append('<li class="flex-column auction auction-box hidden"></li>');
 }
 
 // Функция для изменения времени на табличках с таймерами

@@ -2,6 +2,8 @@
 	// Конструктор пагинатора
 	function makePaginator($show, $cur, $max) {
 		$thisScript = $_SERVER['REQUEST_URI'];
+		if(0 === preg_match("!/page=!", $thisScript))
+			$thisScript .= "/page=1";
 		// Количество отображаемых элементов в пагинаторе
 		$shift = ($show - 1) / 2;
 		$paginatorHtml = "";
