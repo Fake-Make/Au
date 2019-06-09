@@ -583,7 +583,7 @@ input.button[disabled]:hover {
 .dialog-messages {
 	display: block;
 	overflow-y: scroll;
-	max-height: 600px;
+	max-height: 400px;
 	width: 100%;
 	border-radius: 10px 10px 0 0;
 	background: #eee;

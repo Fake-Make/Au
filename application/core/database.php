@@ -259,6 +259,15 @@ class dataBase {
 		return mysqli_fetch_all($sqlRes, MYSQLI_ASSOC);
 	}
 
+	// Получение второго пользователя диалога
+	function getSecondMemberByDialog($dialog) {
+		$dialog = $this->validSQL($dialog);
+
+		$sqlReq = "SELECT recipient, initiator FROM dialogs WHERE id='$dialog'";
+		
+		return mysqli_fetch_assoc(mysqli_query($this->db, $sqlReq));
+	}
+
 	// Функция для получения максимального количества страниц
 	function getMaxPages($size) {
 		$size = $this->validSQL($size);
@@ -325,7 +334,7 @@ class dataBase {
 // Для тестирования запросов прямо в файле класса
 //$a = new dataBase;
 //$a->addMessage(1, );
-//print_r($a->getPersonalAuctions(3, 1, 1, 'created'));// ? 1 : 0;
+//print_r($a->getSecondMemberByDialog(3));// ? 1 : 0;
 //$a->getAuctionsList(13, 1);
 //print_r($a->getAuctionsList(1,3));
 //echo date("Y-m-d H:i:s", time());

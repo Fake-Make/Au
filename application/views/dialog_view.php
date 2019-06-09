@@ -7,11 +7,7 @@
 		<ul class="flex-column dialog-messages">
 			<?foreach($chat as $item):?>
 				<li class="message_container">
-					<?if($item['reciever'] === $user):?>
-						<div class="message message__recieved">
-					<?else:?>
-						<div class="message message__sent">
-					<?endif?>
+					<div class="message message__<?=$item['reciever'] === $user ? 'recieved' : 'sent'?>">
 						<?=$item['text']?>
 					</div>
 				</li>

@@ -13,36 +13,30 @@ class Controller_dialog extends Controller {
 		// 2. Есть ли такой диалог?
 		$id = $model->getDialogByMembers($person, $user);
 		if($id)
-			$this->action_id($id, $person, $user);
-		else {
-			// 3. Получение имени собеседника по его id
-			$personName = $model->getUserNameById($person);
-
-			$data['person'] = $person;
-			$data['user'] = $user;
-			$data['personName'] = $personName;
-			$data['dialog_status'] = "Not exists";
-			// Иначе отобразить поля со значениями: Инициатор, Приёмник, Собщение
-				// При отправке сообщение будет снабжаться этими параметрами и таймштампом
-				// Если диалога нет, он будет создаваться при отправке
-			$this->view->generate('dialog_view.php', 'template_view.php', $data);
-		}		
+			header("Location: $this->host/dialog/id=$id");
+		// 3. Получение имени собеседника по его id
+		$personName = $model->getUserNameById($person);
+		$data['person'] = $person;
+		$data['user'] = $user;
+		$data['personName'] = $personName;
+		$data['dialog_status'] = "Not exists";
+		// Иначе отобразить поля со значениями: Инициатор, Приёмник, Собщение
+			// При отправке сообщение будет снабжаться этими параметрами и таймштампом
+			// Если диалога нет, он будет создаваться при отправке
+		$this->view->generate('dialog_view.php', 'template_view.php', $data);		
 	}
 
 	// Переход со страницы списка диалогов может означать существование диалога
-	function action_id($id = NULL, $person = NULL, $user = NULL) {
+	function action_id($id = NULL) {
 		$model = new Model_Dialog();
-		if(!$user) {
-			preg_match("!user=(\d+)!", $_SERVER['REQUEST_URI'], $matches);
-			$user = validator::validNaturalNumber($matches[1]);
-		}
-		if(!$person) {
-			preg_match("!person=(\d+)!", $_SERVER['REQUEST_URI'], $matches);
-			$person = validator::validNaturalNumber($matches[1]);
-		}
-		if(!$id)
-			$id = $model->getDialogByMembers($person, $user);
-		
+		// Получить id диалога
+		preg_match("!id=(\d+)!", $_SERVER['REQUEST_URI'], $matches);
+		$id = validator::validNaturalNumber($matches[1]);
+		// Получить пользователя
+		$user = $model->getUserIdByLogin($_SESSION['user']);
+		// Получить собеседника
+		$person = $model->getSecondMemberByDialog($id, $user);
+	
 		// Нужно получить список сообщений
 		$chat = $model->getChatByDialogId($id);
 		if(!is_array($chat) || empty($chat))
@@ -50,6 +44,8 @@ class Controller_dialog extends Controller {
 
 		$data['chat'] = $chat;
 		$data['personName'] = $model->getUserNameById($person);
+		$data['person'] = $person;
+		$data['user'] = $user;
 
 		$this->view->generate('dialog_view.php', 'template_view.php', $data);
 	}
@@ -66,8 +62,11 @@ class Controller_dialog extends Controller {
 		if(!($user = $model->getUserIdByLogin(validator::validAnyString($_SESSION['user']))))
 			Route::ErrorPage404();
 		// Различны ли получатель и юзер
-		if($user == $person)
-			Route::ErrorPage404();
+		if($user == $person) {
+			header('HTTP/1.1 404 Not Found');
+			header("Status: 404 Not Found");
+			header("Location: $this->host/404");
+		}
 		// Получить сообщение
 		$messageContent = validator::validAnyString($_POST['dialog-message']);
 
@@ -76,6 +75,7 @@ class Controller_dialog extends Controller {
 			$data['send_status'] = "Not sent<br>";
 			Route::ErrorPage404();
 		}
-		$this->action_id($dialog, $person, $user);
+		
+		header("Location: $this->host/dialog/id=$dialog");
 	}
 }
