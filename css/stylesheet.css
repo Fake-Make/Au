@@ -504,6 +504,18 @@ input.button[disabled]:hover {
 	background: #fff;
 }
 
+.exit-image {
+	margin-right: 10px;
+	opacity: .4;
+	transition-duration: .4s;
+}
+
+.exit-image:hover {
+	opacity: .8;
+	transform: scale(1.1);
+	transition-duration: .4s;
+}
+
 /******************************************/
 
 .login-form {

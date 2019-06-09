@@ -55,7 +55,7 @@ class Controller_auction extends Controller {
 			if($data['riseStatus'] === 'Error' || !$model->addRise($id, $data['user'], $rise))
 				$data['riseStatus'] = 'Error';
 			else
-				header("Location: $this->host/auction/id=$id");			
+				header("Location: $this->host/auction/id=$id");
 		}
 
 		$this->view->generate('auction_view.php', 'template_view.php', $data);
