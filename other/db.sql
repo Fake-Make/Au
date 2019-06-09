@@ -25,10 +25,12 @@ CREATE TABLE auctions (
 	date				TIMESTAMP,
 	initRate		FLOAT NOT NULL,
 	curRate			FLOAT,
-	ownerId			INT NOT NULL,
+	lastMember	INT NOT NULL,
+	ownerId			INT NOT NULL,	
 	status			ENUM('active', 'inactive') NOT NULL DEFAULT 'active',
 	PRIMARY KEY (id),
-	FOREIGN KEY (ownerId) REFERENCES users (id) ON DELETE CASCADE
+	FOREIGN KEY (ownerId) REFERENCES users (id) ON DELETE CASCADE,
+	FOREIGN KEY (lastMember) REFERENCES users (id)
 );
 
 CREATE TABLE dialogs (

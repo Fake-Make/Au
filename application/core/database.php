@@ -49,6 +49,44 @@ class dataBase {
 		return mysqli_query($this->db, $sqlReq);
 	}
 
+	// Функция для добавления в БД истории ставок, ставки и обновлении аукциона
+	function addRise($auctionId, $userId, $rate) {
+		$auctionId = $this->validSQL($auctionId);
+		$userId = $this->validSQL($userId);
+		$rate = $this->validSQL($rate);
+
+		// Если истории ставок нет, то создать такую
+		$sqlReq = "CREATE TABLE IF NOT EXISTS auction_$auctionId (
+			id				INT NOT NULL AUTO_INCREMENT,
+			memberId	INT NOT NULL,
+			rate			FLOAT NOT NULL,
+			PRIMARY KEY (id),
+			FOREIGN KEY (memberId) REFERENCES users (id) ON DELETE CASCADE)";
+		mysqli_query($this->db, $sqlReq);
+
+		// Если что-то пойдёт не так, изменения не должны сохраниться
+		mysqli_query($this->db, "START TRANSACTION");
+			// Добавить в историю ставок новую ставку
+			$sqlReq = "INSERT INTO auction_$auctionId (memberId, rate)
+			VALUES ('$userId', '$rate')";
+			if(!mysqli_query($this->db, $sqlReq)) {
+				mysqli_query($this->db, "ROLLBACK");
+				return false;
+			}
+
+			// Изменить текущую ставку для данного аукциона
+			$sqlReq = "UPDATE auctions SET
+				curRate='$rate',
+				lastMember='$userId'
+			WHERE id='$auctionId'";
+			if(!mysqli_query($this->db, $sqlReq)) {
+				mysqli_query($this->db, "ROLLBACK");
+				return false;
+			}
+		// Если всё завершилось успешно, сохранить изменения
+		return mysqli_query($this->db, "COMMIT");
+	}
+
 	// Функция для получения из БД записей S последних записей об аукционах со смещением P
 	function getAuctionsList($size, $page) {
 		$size = $this->validSQL($size);
@@ -74,7 +112,7 @@ class dataBase {
 	// Функция для получения из БД данных об аукционе по его id
 	function getAuctionById($id) {
 		$id = $this->validSQL($id);
-		$sqlReq = "SELECT a.name, a.description, a.photo, a.date, a.initRate, a.curRate, a.status, u.name ownerName, a.ownerId
+		$sqlReq = "SELECT a.name, a.description, a.photo, a.date, a.initRate, a.curRate, a.lastMember, a.status, u.name ownerName, a.ownerId
 			FROM auctions AS a JOIN users AS u ON a.ownerId = u.id
 			WHERE a.id = '$id';";
 		$sqlRes = mysqli_query($this->db, $sqlReq);

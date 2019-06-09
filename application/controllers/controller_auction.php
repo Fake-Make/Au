@@ -36,24 +36,25 @@ class Controller_auction extends Controller {
 		if(!empty($_POST)) {
 			// Если пользователь не существует
 			if(!$data['user'])
-				Route::ErrorPage404();
+				$data['riseStatus'] = 'Error';
 			// Если организатор повышает ставку
 			if($data['auction']['ownerId'] == $data['user'])
-				Route::ErrorPage404();
+				$data['riseStatus'] = 'Error';
 			// Если аукцион не активен
 			if($data['auction']['status'] !== 'active')
-				Route::ErrorPage404();
+				$data['riseStatus'] = 'Error';
 			// Если пришла ставка меньше минимально возможной
 			if($minRate + $minStep > $rise = validator::validPositiveFloat($_POST['rise']))
-				Route::ErrorPage404();
-			
-			// Если истории ставок нет
-				// То создать такую
-			// Добавить в историю ставок новую ставку
-			// Изменить текущую ставку для данного аукциона
-			
-			// Переадресовать пользователя на страницу с аукционом
-			header("Location: $this->host/auction/id=$id");			
+				$data['riseStatus'] = 'Error';
+			// Если пользователь является последним, кто делал ставку
+			if($data['user'] == $data['auction']['lastMember'])
+				$data['riseStatus'] = 'Error';
+				
+			// Если до этого были ошибки, то не выполнять, если выполнилось с ошибкой - сообщить
+			if($data['riseStatus'] === 'Error' || !$model->addRise($id, $data['user'], $rise))
+				$data['riseStatus'] = 'Error';
+			else
+				header("Location: $this->host/auction/id=$id");			
 		}
 
 		$this->view->generate('auction_view.php', 'template_view.php', $data);

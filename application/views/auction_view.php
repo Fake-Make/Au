@@ -36,7 +36,7 @@
 				<!--Добавить минимальное значение как $текущаяСтавка + $минимальныйШаг-->
 				<input name="rise" class="input-box product-control__elem" type="number" min="<?=$minRate + $minStep?>" step="0.5" value="<?=$minRate + $minStep?>" placeholder="Ваша ставка">
 				<!--Это же значение подставить в значение поля-->
-				<input class="button product-control__elem" type="submit" value="Сделать ставку" <?=$auction['ownerId'] === $user || is_null($user) ? "disabled" : ""?>>
+				<input class="button product-control__elem" type="submit" value="Сделать ставку" <?=$auction['ownerId'] === $user || $auction['lastMember'] === $user || is_null($user) ? "disabled" : ""?>>
 			</form>
 		</div>
 	</section>

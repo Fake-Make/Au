@@ -9,4 +9,8 @@ class Model_Auction extends Model {
 		$user = $login ? $this->db->getUserIdByLogin($login) : NULL;
 		return [$arr, $user];
 	}
+
+	function addRise($auction, $user, $rise) {
+		return $this->db->addRise($auction, $user, $rise);
+	}
 }
