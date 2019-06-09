@@ -29,6 +29,7 @@ class Controller_auction extends Controller {
 
 		$data['auction'] = $auction['0'];
 		$data['user'] = $auction['1'];
+		$data['id'] = $id;
 		$data['minRate'] = $minRate;
 		$data['minStep'] = $minStep;
 

@@ -383,6 +383,7 @@ old version
 /**********************************************************************************/
 
 .auction-product {
+	position: relative;
 	padding: 20px;
 	align-items: flex-start;
 }
@@ -777,11 +778,19 @@ input.button[disabled]:hover {
 	visibility: hidden;
 }
 
-/*.hidden:hover {
-	transform: none;
-	box-shadow: none;
-	cursor: auto;
-} */
+.delete-button {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	font-size: 2.5em;
+	opacity: .8;
+	transition-duration: .4s;
+}
+
+.delete-button:hover {
+	transform: rotate(90deg);
+	transition-duration: .4s;
+}
 
 .paginator {
 	max-width: 500px;

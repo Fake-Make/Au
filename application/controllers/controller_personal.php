@@ -5,7 +5,7 @@ class Controller_personal extends Controller {
 		if(!isset($_SESSION['user']))
 			Route::ErrorPage404();
 		else
-			header("Location: <?=$this->host?>/personal/created/page=1");
+			header("Location: $this->host/personal/created/page=1");
 	}
 
 	function action_active()	{

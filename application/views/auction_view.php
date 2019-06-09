@@ -10,6 +10,9 @@
 ?>
 <h1 class="invisible">Просмотр аукциона</h1>
 <section class="flex-row auction-box auction-product auction-timered">
+	<?if($auction['ownerId'] === $user && !is_null($user)):?>
+		<a href="<?=$this->host?>/delete/id=<?=$id?>" class="delete-button" title="Удалить аукцион">&#10006;</a>
+	<?endif?>
 	<div class="flex-column product-image-box">
 		<h2><?=$auction['name']?></h2>
 		<img class="product-image" src="<?=$this->host?>/<?=$ph?>" alt="<?=$alt?>">

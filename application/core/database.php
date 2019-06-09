@@ -87,6 +87,19 @@ class dataBase {
 		return mysqli_query($this->db, "COMMIT");
 	}
 
+	// Функция для удаления существующего аукциона
+	function deleteAuction($auctionId) {
+		// По-хорошему, оба запроса необходимо выполнять атомарно
+		$auctionId = $this->validSQL($auctionId);
+		// Удаление истории ставок
+		$sqlReq = "DROP TABLE IF EXISTS auction_$auctionId";
+		mysqli_query($this->db, $sqlReq);
+
+		// Удаление записи из списка аукционов
+		$sqlReq = "DELETE FROM auctions WHERE id='$auctionId'";
+		return mysqli_query($this->db, $sqlReq);
+	}
+
 	// Функция для получения из БД записей S последних записей об аукционах со смещением P
 	function getAuctionsList($size, $page) {
 		$size = $this->validSQL($size);
@@ -159,6 +172,13 @@ class dataBase {
 	function getUserIdByLogin($login) {
 		$login = $this->validSQL($login);
 		$sqlReq = "SELECT id from users WHERE login = '$login';";
+		return mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"];
+	}
+
+	// Функция для получения из БД организатора аукциона по id аукциона
+	function getOwnerByAuction($auctionId) {
+		$auctionId = $this->validSQL($auctionId);
+		$sqlReq = "SELECT ownerId from auctions WHERE id = '$auctionId';";
 		return mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"];
 	}
 
