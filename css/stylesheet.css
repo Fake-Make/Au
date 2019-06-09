@@ -590,6 +590,12 @@ input.button[disabled]:hover {
 	flex-grow: 1;
 }
 
+.message_container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
 .message {
 	width: auto;
 	padding: 10px;
@@ -599,11 +605,11 @@ input.button[disabled]:hover {
 }
 
 .message__recieved {
-	float: left;
+	align-self: flex-start;
 }
 
 .message__sent {
-	float: right;
+	align-self: flex-end;
 	background: #ddd;
 }
 

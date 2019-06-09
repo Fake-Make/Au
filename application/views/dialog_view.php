@@ -4,14 +4,16 @@
 	<?if("Not exists" === $dialog_status):?>
 		<p style="color: #09f">В диалоге ещё нет сообщений.</p>
 	<?else:?>
-		<ul class="dialog-messages">
+		<ul class="flex-column dialog-messages">
 			<?foreach($chat as $item):?>
-				<?if($item['reciever'] === $user):?>
-					<li class="message message__recieved">
-				<?else:?>
-					<li class="message message__sent">
-				<?endif?>
-				<?=$item['text']?>
+				<li class="message_container">
+					<?if($item['reciever'] === $user):?>
+						<div class="message message__recieved">
+					<?else:?>
+						<div class="message message__sent">
+					<?endif?>
+						<?=$item['text']?>
+					</div>
 				</li>
 			<?endforeach?>
 		</ul>
