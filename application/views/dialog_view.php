@@ -5,12 +5,11 @@
 		<p style="color: #09f">В диалоге ещё нет сообщений.</p>
 	<?else:?>
 		<ul class="dialog-messages">
-			<!--Как только появится хотя бы один диалог, прикрутить его просмотр-->
 			<?foreach($chat as $item):?>
-				<?if($item['author'] === $user):?>
-					<li class="message message__sent">
-				<?else:?>
+				<?if($item['reciever'] === $user):?>
 					<li class="message message__recieved">
+				<?else:?>
+					<li class="message message__sent">
 				<?endif?>
 				<?=$item['text']?>
 				</li>

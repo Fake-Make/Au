@@ -1,11 +1,6 @@
 <?php
 
 class Controller_dialog extends Controller {
-	// Переход к действию по-умолчанию должен вызывать редирект на 404
-	function action_index() {
-		Route::ErrorPage404();
-	}
-
 	// Переход со страницы аукциона не означает существование диалога
 	function action_person() {
 		$model = new Model_Dialog();
@@ -36,9 +31,30 @@ class Controller_dialog extends Controller {
 
 	// Переход со страницы списка диалогов может означать существование диалога
 	function action_id($id = NULL, $person = NULL, $user = NULL) {
-		$this->view->generate('dialog_view.php', 'template_view.php');
+		$model = new Model_Dialog();
+		if(!$user) {
+			preg_match("!user=(\d+)!", $_SERVER['REQUEST_URI'], $matches);
+			$user = validator::validNaturalNumber($matches[1]);
+		}
+		if(!$person) {
+			preg_match("!person=(\d+)!", $_SERVER['REQUEST_URI'], $matches);
+			$person = validator::validNaturalNumber($matches[1]);
+		}
+		if(!$id)
+			$id = $model->getDialogByMembers($person, $user);
+		
+		// Нужно получить список сообщений
+		$chat = $model->getChatByDialogId($id);
+		if(!is_array($chat) || empty($chat))
+			$data['dialog_status'] = "Not exists";
+
+		$data['chat'] = $chat;
+		$data['personName'] = $model->getUserNameById($person);
+
+		$this->view->generate('dialog_view.php', 'template_view.php', $data);
 	}
 
+	// Отправка сообщения
 	function action_send() {
 		$model = new Model_Dialog();
 		// 1. Прежде всего нужно получить текст, автора и получателя
@@ -51,19 +67,15 @@ class Controller_dialog extends Controller {
 			Route::ErrorPage404();
 		// Различны ли получатель и юзер
 		if($user == $person)
-		Route::ErrorPage404();
+			Route::ErrorPage404();
 		// Получить сообщение
 		$messageContent = validator::validAnyString($_POST['dialog-message']);
 
 		// Отправка сообщения
-		if(!$model->sendMessage($user, $person, $messageContent)) {
+		if(!($dialog = $model->sendMessage($user, $person, $messageContent))) {
 			$data['send_status'] = "Not sent<br>";
-			echo "Not Sent";
+			Route::ErrorPage404();
 		}
-			
-		echo "От $user к $person: $messageContent";
-		// Сформировать сообщение
-		// Если успешно, то редирект в этот же диалог
-		//$this->view->generate('dialog_view.php', 'template_view.php');
+		$this->action_id($dialog, $person, $user);
 	}
 }

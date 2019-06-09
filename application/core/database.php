@@ -182,7 +182,6 @@ class dataBase {
 		// 1. Получаем слот для диалога
 		$sqlReq = "SELECT max(id) FROM dialogs";
 		$id = mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"] + 1;
-		echo "DIALOG IN MYSQL:$id<br>";
 		// 2. Добавление в список диалогов новой записи
 		$sqlReq =
 			"INSERT INTO dialogs (id, initiator, recipient, lastMessage, lastUpdate)
@@ -194,16 +193,15 @@ class dataBase {
 		return $id;
 	}
 
-	/*
-CREATE TABLE dialogs (
-	id					INT NOT NULL AUTO_INCREMENT,
-	initiator		INT,
-	recipient		INT NOT NULL,
-	lastMessage	TEXT NOT NULL,
-	lastUpdate	TIMESTAMP NOT NULL,
+	// Функция для получения списка сообщений в диалоге
+	function getChatByDialogId($dialog) {
+		$dialog = $this->validSQL($dialog);
 
-4. Добавить сообщение
-*/
+		$sqlReq = "SELECT text, reciever FROM dialog_$dialog";
+
+		$sqlRes = mysqli_query($this->db, $sqlReq);
+		return mysqli_fetch_all($sqlRes, MYSQLI_ASSOC);
+	}
 
 	// Добавление нового сообщения
 	function addMessage($dialog, $from, $to, $what) {
