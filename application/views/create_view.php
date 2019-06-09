@@ -1,7 +1,7 @@
 <h1>Создание аукциона</h1>
 <form action="<?=$this->host?>/create" method="POST" enctype="multipart/form-data" class="flex-row login-form auction-box">
 	<label class="login-label" for="file">Загрузите фотографию товара:</label>
-	<input class="input-box login-input" type="file" name="file" id="file" <?=isset($_POST['file']) ? 'value="' . $_POST['file'] . '"' : ""?>>
+	<input class="input-box login-input" type="file" name="file" d="file" <?=isset($_POST['file']) ? 'value="' . $_POST['file'] . '"' : ""?> required>
 	<label class="login-label" for="good-name">Введите название товара:</label>
 	<input class="input-box login-input" type="text" name="good-name" id="good-name" placeholder="Apple IPhone SE" required <?=isset($_POST['good-name']) ? 'value="' . $_POST['good-name'] . '"' : ""?>>
 	<label class="login-label" for="good-description">Опишите товар:</label>

@@ -16,7 +16,8 @@ class Controller_create extends Controller {
 				$initRate = validator::validPositiveFloat($_POST['good-initRate']);
 				$date = validator::validNaturalNumber($_POST['good-date']);
 
-				if(isset($_POST['file']) && isset($_FILES['file'])) {
+
+				if(isset($_FILES['file'])) {
 					$file_temp = $_FILES['file']['tmp_name'];   
 					$imageinfo = getimagesize($file_temp);
 					if($imageinfo['mime'] != 'image/gif' && $imageinfo['mime'] != 'image/jpeg') {
