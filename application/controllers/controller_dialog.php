@@ -38,4 +38,32 @@ class Controller_dialog extends Controller {
 	function action_id($id = NULL, $person = NULL, $user = NULL) {
 		$this->view->generate('dialog_view.php', 'template_view.php');
 	}
+
+	function action_send() {
+		$model = new Model_Dialog();
+		// 1. Прежде всего нужно получить текст, автора и получателя
+		// Проверить получателя
+		preg_match("!person=(\d+)!", $_SERVER['REQUEST_URI'], $matches);
+		if(!($person = validator::validNaturalNumber($matches[1])))
+			Route::ErrorPage404();
+		// Проверить отправителя
+		if(!($user = $model->getUserIdByLogin(validator::validAnyString($_SESSION['user']))))
+			Route::ErrorPage404();
+		// Различны ли получатель и юзер
+		if($user == $person)
+		Route::ErrorPage404();
+		// Получить сообщение
+		$messageContent = validator::validAnyString($_POST['dialog-message']);
+
+		// Отправка сообщения
+		if(!$model->sendMessage($user, $person, $messageContent)) {
+			$data['send_status'] = "Not sent<br>";
+			echo "Not Sent";
+		}
+			
+		echo "От $user к $person: $messageContent";
+		// Сформировать сообщение
+		// Если успешно, то редирект в этот же диалог
+		//$this->view->generate('dialog_view.php', 'template_view.php');
+	}
 }

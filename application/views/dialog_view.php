@@ -17,10 +17,8 @@
 			<?endforeach?>
 		</ul>
 	<?endif?>	
-	<form class="flex-row dialog-control" action="<?=$this->host?>/dialog/send">
-		<textarea class="input-box dialog-input" name="dialog-message" placeholder="Написать сообщение"></textarea>
+	<form class="flex-row dialog-control" method="POST" action="<?=$this->host?>/dialog/send<?=$id ? "=$id" : ""?>/person=<?=$person?>">
+		<textarea class="input-box dialog-input" name="dialog-message" placeholder="Написать сообщение" required></textarea>
 		<input class="button dialog-send" type="submit" value="Отправить">
-		<!--Продумать-->
-		<input hidden name="person" value="<?=$person?>">
 	</form>
 </section>

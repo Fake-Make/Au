@@ -173,6 +173,74 @@ class dataBase {
 		return mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"];
 	}
 
+	// Создание нового диалога
+	function createDialog($from, $to) {
+		$from = $this->validSQL($from);
+		$to = $this->validSQL($to);
+		$time = $this->validSQL(date('Y-m-d H:i:s', time()));
+
+		// 1. Получаем слот для диалога
+		$sqlReq = "SELECT max(id) FROM dialogs";
+		$id = mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"] + 1;
+		echo "DIALOG IN MYSQL:$id<br>";
+		// 2. Добавление в список диалогов новой записи
+		$sqlReq =
+			"INSERT INTO dialogs (id, initiator, recipient, lastMessage, lastUpdate)
+			VALUES ('$id', '$from', '$to', 'Empty', '$time')";
+		if(!mysqli_query($this->db, $sqlReq))
+			return false;
+		
+		// Возвращаем id диалога
+		return $id;
+	}
+
+	/*
+CREATE TABLE dialogs (
+	id					INT NOT NULL AUTO_INCREMENT,
+	initiator		INT,
+	recipient		INT NOT NULL,
+	lastMessage	TEXT NOT NULL,
+	lastUpdate	TIMESTAMP NOT NULL,
+
+4. Добавить сообщение
+*/
+
+	// Добавление нового сообщения
+	function addMessage($dialog, $from, $to, $what) {
+		$dialog = $this->validSQL($dialog);
+		$from = $this->validSQL($from);
+		$to = $this->validSQL($to);
+		$what = $this->validSQL($what);
+		$time = $this->validSQL(date('Y-m-d H:i:s', time()));
+
+		// Если списка сообщений для этого диалога нет, то создать
+		$sqlReq =
+			"CREATE TABLE	IF NOT EXISTS dialog_$dialog (
+				id				INT NOT NULL AUTO_INCREMENT,
+				text			TEXT NOT NULL,
+				reciever	INT NOT NULL,
+				PRIMARY KEY (id),
+				FOREIGN KEY (reciever) REFERENCES users (id) ON DELETE CASCADE)";
+		if(!mysqli_query($this->db, $sqlReq))
+			return false;
+		
+
+		// Непосредственное добавление сообщения
+		$sqlReq =
+			"INSERT INTO dialog_$dialog (text, reciever)
+			VALUES ('$what', '$to')";
+		if(!mysqli_query($this->db, $sqlReq))
+			return false;
+
+		// Обновление в списке диалогов
+		$sqlReq =
+			"UPDATE dialogs SET
+			lastMessage='$what',
+			lastUpdate='$time'
+			WHERE id='$dialog'";
+		return mysqli_query($this->db, $sqlReq);
+	}
+
 	// Функция для получения списка диалогов пользователя
 	function getDialogsById($user) {
 		$user = $this->validSQL($user);
@@ -258,6 +326,8 @@ class dataBase {
 
 // Для тестирования запросов прямо в файле класса
 //$a = new dataBase;
+//$a->addMessage(1, );
 //print_r($a->getPersonalAuctions(3, 1, 1, 'created'));// ? 1 : 0;
 //$a->getAuctionsList(13, 1);
 //print_r($a->getAuctionsList(1,3));
+//echo date("Y-m-d H:i:s", time());

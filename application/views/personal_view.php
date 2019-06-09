@@ -56,7 +56,7 @@
 					<a class="flex-row dialog-list__link" href="<?=$this->host?>/dialog/id=<?=$item['id']?>">
 						<img class="user-image dialog__user-image" src="<?=$this->host?>/<?=$photo?>" alt="Фото пользователя">
 						<div class="flex-row dialog-preview">
-							<span class="dialog-preview__name"><?=$item['member']?></span>
+							<span class="dialog-preview__name"><?=$item['name']?></span>
 							<span class="dialog-preview__time"><?=date("H:m", $item['lastUpdate'])?></span>
 							<p class="dialog-preview__message"><?=$item['lastMessage']?></p>
 						</div>
