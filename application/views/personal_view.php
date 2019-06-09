@@ -11,9 +11,13 @@
 		</ul>
 	</nav>
 </header>
-<?if("created"===$tab):?>
+<?if("created"===$tab || "active" === $tab):?>
 	<?if('empty' === $auctions_status):?>
-		<p style="color: #09f">У вас пока нет ни одного созданного аукциона.</p>
+		<?if("created"===$tab):?>
+			<p style="color: #09f">У вас пока нет ни одного созданного аукциона.</p>
+		<?elseif("active" === $tab):?>
+			<p style="color: #09f">Вы пока не участвуете ни в одном аукционе.</p>
+		<?endif?>
 	<?else:?>
 	<ul class="flex-row auctions">
 		<?foreach($aucs as $item):?>
@@ -161,57 +165,6 @@
 					<span class="dialog-preview__time">11:11</span>
 					<p class="dialog-preview__message">Слушай, хлопец, ты покупать собираешься или нет?</p>
 				</div>
-			</a>
-		</li>
-	</ul>
-<?else:?>
-	<ul class="flex-row auctions">
-		<li class="flex-column auction auction-box">
-			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
-				<img class="auction-image__listed" src="<?=$this->host?>/img/box.png" alt="auction" width="100px">
-				<p>Клавиатура Logitech</p>
-				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
-				<p>Оставшееся время: <span>05:49:53</span></p>
-			</a>
-		</li>
-		<li class="flex-column auction auction-box">
-			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
-				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
-				<p>Клавиатура Logitech</p>
-				<p>Текущая ставка: <span>500</span>&#8381;</p>
-				<p>Оставшееся время: <span>05:49:53</span></p>
-			</a>
-		</li>
-		<li class="flex-column auction auction-box">
-			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
-				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
-				<p>Клавиатура Logitech</p>
-				<p>Текущая ставка: <span>500</span>&#8381;</p>
-				<p>Оставшееся время: <span>05:49:53</span></p>
-			</a>
-		</li>
-		<li class="flex-column auction auction-box" style="background:#999">
-			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
-				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
-				<p>Клавиатура Logitech</p>
-				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
-				<p>Оставшееся время: <span>05:49:53</span></p>
-			</a>
-		</li>
-		<li class="flex-column auction auction-box" style="background:red">
-			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
-				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
-				<p>Клавиатура Logitech</p>
-				<p>Текущая ставка: <span>500</span>&#8381;</p>
-				<p>Оставшееся время: <span>05:49:53</span></p>
-			</a>
-		</li>
-		<li class="flex-column auction auction-box" style="background:green">
-			<a class="flex-column auction__link" href="<?=$this->host?>/auction">
-				<img class="auction-image__listed" src="img/box.png" alt="auction" width="100px">
-				<p>Клавиатура Logitech</p>
-				<p>Текущая ставка: <span style="color: red">500</span>&#8381;</p>
-				<p>Оставшееся время: <span>05:49:53</span></p>
 			</a>
 		</li>
 	</ul>

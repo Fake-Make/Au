@@ -11,6 +11,7 @@ class Model_Auction extends Model {
 	}
 
 	function addRise($auction, $user, $rise) {
+		$this->db->addAuctionToUser($auction, $user);
 		return $this->db->addRise($auction, $user, $rise);
 	}
 }

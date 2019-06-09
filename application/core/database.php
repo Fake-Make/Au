@@ -32,7 +32,21 @@ class dataBase {
 
 		return mysqli_query($this->db, $sqlReq);
 	}
-	
+
+	// Функция для добавления в БД таблицы активных аукционов пользователя
+	function addUserTable($id) {
+		$id = $this->validSQL($id);
+		
+		$sqlReq = "CREATE TABLE user_$id (
+			id INT NOT NULL AUTO_INCREMENT,
+			auctionId INT NOT NULL,
+			PRIMARY KEY (id),
+			FOREIGN KEY (auctionId) REFERENCES auctions (id) ON DELETE CASCADE,
+			UNIQUE KEY ix_auctionId (auctionId))";
+
+		return mysqli_query($this->db, $sqlReq);
+	}
+
 	// Функция для добавления в БД записи о новом аукционе
 	function addAuction($name, $description, $initRate, $timestamp, $user, $photo) {
 		$name = $this->validSQL($name);
@@ -123,13 +137,26 @@ class dataBase {
 
 		if($tab === 'created')
 			$sqlReq = "SELECT id, name, initRate, curRate, date, photo FROM auctions
-			WHERE status='active' AND ownerId='$user' ORDER BY date " .
+				WHERE status='active' AND ownerId='$user' ORDER BY date " .
 				"LIMIT " . ($offset ? "$offset, " : "") . $size;
 		if($tab === 'active')
-			$sqlReq = "";
+			$sqlReq = "SELECT a.id, a.name, a.initRate, a.curRate, a.date, a.photo FROM auctions AS a
+				INNER JOIN user_$user AS u ON a.id = u.auctionId
+				WHERE a.status='active' ORDER BY a.date " .
+				"LIMIT " . ($offset ? "$offset, " : "") . $size;
 
 		$sqlRes = mysqli_query($this->db, $sqlReq);
 		return mysqli_fetch_all($sqlRes, MYSQLI_ASSOC);
+	}
+
+	function addAuctionToUser($auction, $user) {
+		$auction = $this->validSQL($auction);
+		$user = $this->validSQL($user);
+		
+		$sqlReq = "INSERT INTO user_$user (auctionId)
+			VALUES ('$auction')";
+
+		return mysqli_query($this->db, $sqlReq);
 	}
 
 	// Функция для получения максимального количества страниц
@@ -146,7 +173,7 @@ class dataBase {
 		if($tab === 'created')
 			$sqlReq = "SELECT count(*) FROM auctions WHERE ownerId='$user'";
 		if($tab === 'active')
-			$sqlReq = "";
+			$sqlReq = "SELECT count(*) FROM user_$user";
 		$rawNumber = mysqli_fetch_row(mysqli_query($this->db, $sqlReq))["0"];
 		return ceil($rawNumber / $size);
 	}
