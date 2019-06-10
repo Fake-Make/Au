@@ -1,7 +1,9 @@
 <?php
 	// Конструктор пагинатора
 	function makePaginator($show, $cur, $max) {
+		// Получение запрашиваемого адреса
 		$thisScript = $_SERVER['REQUEST_URI'];
+		// Если не указан параметр текущей страницы - добавить его
 		if(0 === preg_match("!/page=!", $thisScript))
 			$thisScript .= "/page=1";
 		// Количество отображаемых элементов в пагинаторе
@@ -55,5 +57,6 @@
 					($cur != $max ? '<a href="' . preg_replace("!page=(\d+)!", "page=" . ($cur + 1), $thisScript) . '" class="paginator__link">Следующая страница</a>' : '') .
 				'</li>
 			</ul>';
+		// Функция возвращает результирующий HTML-код
 		return $paginatorHtml;
 	}
