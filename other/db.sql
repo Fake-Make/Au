@@ -1,7 +1,9 @@
+-- Перезапись существующей базы данных со всеми таблицами
 DROP DATABASE IF EXISTS auction;
 CREATE DATABASE IF NOT EXISTS auction;
 USE auction;
 
+-- Создание таблицы для списка пользователей
 CREATE TABLE users (
 	id				INT NOT NULL AUTO_INCREMENT,
 	name			VARCHAR(255) NOT NULL,
@@ -14,9 +16,7 @@ CREATE TABLE users (
 	PRIMARY KEY (id)
 );
 
-#INSERT INTO users (name, surname,	login, email,	passwordHash) VALUES
-#('', '', '', '', '');
-
+-- Создание таблицы для списка аукционов
 CREATE TABLE auctions (
 	id					INT NOT NULL AUTO_INCREMENT,
 	name				VARCHAR(255) NOT NULL,
@@ -33,6 +33,7 @@ CREATE TABLE auctions (
 	FOREIGN KEY (lastMember) REFERENCES users (id)
 );
 
+-- Создание таблицы для списка диалогов
 CREATE TABLE dialogs (
 	id					INT NOT NULL AUTO_INCREMENT,
 	initiator		INT,

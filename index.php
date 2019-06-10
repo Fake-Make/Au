@@ -1,4 +1,5 @@
 <?
-	ini_set('display_errors', 1);
+	// Автозапуск сесии
 	session_start();
+	// Подключение файла-загрузчика
 	require_once 'application/bootstrap.php';

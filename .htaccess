@@ -1,4 +1,7 @@
+# Включение и конфигурация режима перезаписи адреса
 RewriteEngine On
+# Перезаписывать запросы к файлам или директориям
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+# Переадресовать на index.php
 RewriteRule .* index.php [L]
