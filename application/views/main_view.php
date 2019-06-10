@@ -1,8 +1,8 @@
 <h1 class="invisible">Просмотр всех аукционов</h1>
 <?extract($data)?>
 <?if($auctions_status === "empty"):?>
-	<p>Список аукционов пока пуст :(<br>
-	Но вы можете это <a href="<?=$this->host?>/create">исправить</a>...</p>
+	<p style="color: #09f">Список аукционов пока пуст :(<br>
+	Но вы можете это <a style="text-decoration: underline" href="<?=$this->host?>/create">исправить</a>...</p>
 <?else:?>
 	<ul class="flex-row auctions">
 		<?foreach($aucs as $item):?>
