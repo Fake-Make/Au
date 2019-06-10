@@ -669,6 +669,7 @@ input.button[disabled]:hover {
 
 	.create__button {
 		width: 100%;
+		margin: 10px auto;
 	}
 }
 
