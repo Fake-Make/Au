@@ -3,6 +3,9 @@
 class Controller_create extends Controller {
 	// Действие по умолчанию - создание аукциона
 	function action_index()	{
+		// Если пользователь не авторизован - переадресация на страницу авторизации
+		if(!$_SESSION['user'])
+			header("Location: $this->host/login");
 		// Проверка входных данных
 		if(empty($_POST)) {
 			$data["creating_status"] = "";
