@@ -1,7 +1,9 @@
 <?php
-
+// Класс-контроллер для страницы создания аукциона
 class Controller_create extends Controller {
+	// Действие по умолчанию - создание аукциона
 	function action_index()	{
+		// Проверка входных данных
 		if(empty($_POST)) {
 			$data["creating_status"] = "";
 		} else {
@@ -16,7 +18,7 @@ class Controller_create extends Controller {
 				$initRate = validator::validPositiveFloat($_POST['good-initRate']);
 				$date = validator::validNaturalNumber($_POST['good-date']);
 
-
+				// Валидация загружаемого файла
 				if(isset($_FILES['file'])) {
 					$file_temp = $_FILES['file']['tmp_name'];   
 					$imageinfo = getimagesize($file_temp);
@@ -44,6 +46,7 @@ class Controller_create extends Controller {
 			}
 		}			
 		
+		// Непосредственная генерация страницы
 		$this->view->generate('create_view.php', 'template_view.php', $data);
 	}
 }

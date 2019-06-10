@@ -11,11 +11,11 @@ class Controller_registration extends Controller {
 				empty($_POST['registration-password']) -
 				empty($_POST['registration-password-again']);
 			if(5 === $count) {
-				$name = $_POST['registration-name'];
-				$login = $_POST['registration-nick'];
-				$email = $_POST['registration-email'];
-				$password = $_POST['registration-password'];
-				$passwordRepeat = $_POST['registration-password-again'];
+				$name = validator::validAnyString($_POST['registration-name']);
+				$login = validator::validAnyString($_POST['registration-nick']);
+				$email = validator::validAnyString($_POST['registration-email']);
+				$password = validator::validAnyString($_POST['registration-password']);
+				$passwordRepeat = validator::validAnyString($_POST['registration-password-again']);
 				
 				if($password==$passwordRepeat) {
 					$model = new Model_Registration();

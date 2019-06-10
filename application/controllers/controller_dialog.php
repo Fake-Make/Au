@@ -1,5 +1,5 @@
 <?php
-
+// Класс-контроллер для страницы диалога
 class Controller_dialog extends Controller {
 	// Переход со страницы аукциона не означает существование диалога
 	function action_person() {
@@ -47,6 +47,7 @@ class Controller_dialog extends Controller {
 		$data['person'] = $person;
 		$data['user'] = $user;
 
+		// Непосредственная генерация страницы
 		$this->view->generate('dialog_view.php', 'template_view.php', $data);
 	}
 
@@ -63,9 +64,7 @@ class Controller_dialog extends Controller {
 			Route::ErrorPage404();
 		// Различны ли получатель и юзер
 		if($user == $person) {
-			header('HTTP/1.1 404 Not Found');
-			header("Status: 404 Not Found");
-			header("Location: $this->host/404");
+			Route::ErrorPage404();
 		}
 		// Получить сообщение
 		$messageContent = validator::validAnyString($_POST['dialog-message']);
@@ -76,6 +75,7 @@ class Controller_dialog extends Controller {
 			Route::ErrorPage404();
 		}
 		
+		// Если успешно, то переадресовать пользователя в этот же диалог
 		header("Location: $this->host/dialog/id=$dialog");
 	}
 }

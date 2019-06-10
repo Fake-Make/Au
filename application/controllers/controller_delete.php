@@ -1,11 +1,6 @@
 <?php
-// Класс-контроллер для страницы аукциона
-class Controller_delete extends Controller {
-	// Нельзя запросить просто аукцион
-	function action_index()	{
-		Route::ErrorPage404();
-	}
-	
+// Класс-контроллер для удаления аукциона
+class Controller_delete extends Controller {	
 	// Получаем аукцион по его уникальному идентификатору
 	function action_id() {
 		$model = new Model_Delete();
@@ -20,6 +15,7 @@ class Controller_delete extends Controller {
 		if(!$ownerId || $user !== $ownerId)
 			Route::ErrorPage404();
 
+		// Если удаление завершено успешно, то редиректим пользователя на главную страницу
 		if(!$model->deleteAuction($id))
 			Route::ErrorPage404();
 		else

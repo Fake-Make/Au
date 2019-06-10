@@ -1,21 +1,29 @@
 <?php
-
+// Класс-контроллер для страницы личного кабинета
 class Controller_personal extends Controller {
+	// Метод по умолчанию для запроса к странице без параметров
 	function action_index()	{
+		// Если пользователь не авторизован, то переадресация на страницу авторизации
 		if(!isset($_SESSION['user']))
-			Route::ErrorPage404();
+			header("Location: $this->host/login");
+		// Иначе - на первую страницу личного кабинета с вкладкой active
 		else
 			header("Location: $this->host/personal/active/page=1");
 	}
 
+	// Метод для запроса личного кабинета с вкладкой "участие в аукционах"
 	function action_active()	{
+		// Вызов метода для генерации списка аукционов в зависимости от вкладки
 		$this->makeAuctionsList('active');
 	}
 
+	// Метод для запроса личного кабинета с вкладкой "организация аукционов"
 	function action_created()	{
+		// Вызов метода для генерации списка аукционов в зависимости от вкладки
 		$this->makeAuctionsList('created');
 	}
 
+	// Метод для отображения списка аукционов в зависимости от вкладки
 	function makeAuctionsList($tab) {
 		$model = new Model_Personal();
 		// 1. Если нет пользователя, то как мы тут оказались?
@@ -44,6 +52,7 @@ class Controller_personal extends Controller {
 		$this->view->generate('personal_view.php', 'template_view.php', $data);
 	}
 
+	// Метод для запроса личного кабинета с вкладкой "диалоги"
 	function action_dialogs()	{
 		$model = new Model_Personal();
 		$tab = "dialogs";

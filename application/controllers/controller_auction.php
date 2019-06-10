@@ -1,17 +1,13 @@
 <?php
 // Класс-контроллер для страницы аукциона
 class Controller_auction extends Controller {
-	// Нельзя запросить просто аукцион
-	function action_index()	{
-		Route::ErrorPage404();
-	}
-
 	// Получаем аукцион по его уникальному идентификатору
 	function action_id() {
 		// Прежде всего нужно знать, какой аукцион мы ищем
 		preg_match("!id=(\d+)!", $_SERVER['REQUEST_URI'], $matches);
 		$model = new Model_Auction();
 
+		// Получение и валидация входных данных
 		$id = validator::validNaturalNumber($matches[1]);
 		$login = validator::validAnyString($_SESSION['user']);
 		
@@ -24,9 +20,11 @@ class Controller_auction extends Controller {
 		if(false === $auction = $model->getAuctionById($id, $login))
 			Route::ErrorPage404();
 
+		// Определение минимально-возможной ставки
 		$minRate = $auction['0']['curRate'] ? $auction['0']['curRate'] : $auction['0']['initRate'];
 		$minStep = $auction['0']['initRate'] * 0.05;
 
+		// Подготовка данных для передачи их представлению
 		$data['auction'] = $auction['0'];
 		$data['user'] = $auction['1'];
 		$data['id'] = $id;
@@ -58,6 +56,7 @@ class Controller_auction extends Controller {
 				header("Location: $this->host/auction/id=$id");
 		}
 
+		// Непосредственная генерация страницы
 		$this->view->generate('auction_view.php', 'template_view.php', $data);
 	}
 }
