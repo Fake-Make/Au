@@ -1,11 +1,13 @@
 <?php
-
+// Класс модели списка аукционов, отвечающий за обмен данными для страницы списка аукционов
 class Model_Main extends Model {
-	public function getAuctions($size, $page) {
+	// Метод для получения списка аукционов с учётом постраничной навигации
+	function getAuctions($size, $page) {
 		return $this->db->getAuctionsList($size, $page);
 	}
 
-	public function getMaxPages($size)	{
+	// Метод для получения максимального числа страниц с учётом постраничной навигации
+	function getMaxPages($size)	{
 		return $this->db->getMaxPages($size);
 	}
 }
