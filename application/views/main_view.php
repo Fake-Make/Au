@@ -1,6 +1,6 @@
 <h1 class="invisible">Просмотр всех аукционов</h1>
 <?extract($data)?>
-<?if(auctions_status === "empty"):?>
+<?if($auctions_status === "empty"):?>
 	<p>Список аукционов пока пуст :(<br>
 	Но вы можете это <a href="<?=$this->host?>/create">исправить</a>...</p>
 <?else:?>

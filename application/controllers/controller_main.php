@@ -21,7 +21,7 @@ class Controller_Main extends Controller {
 		$data['aucs'] = $model->getAuctions(MAX_GOODS_ON_PAGE, $page);
 		$data['page'] = $page;
 		// Проверка списка аукционов на пустоту
-		if(!is_array($data['aucs']))
+		if(!is_array($data['aucs']) || empty($data['aucs']))
 			$data["auctions_status"] = "empty";
 		else
 			$data["auctions_status"] = "got";
