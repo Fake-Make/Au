@@ -1,5 +1,5 @@
 <?extract($data)?>
-<?//print_r($auction)
+<?
 	$ph = $auction['photo'];
 	$alt = "Фотография товара";
 	if(is_null($ph) || $ph === "NULL" || $ph === "") {
@@ -38,11 +38,8 @@
 			<?else:?>
 				<a class="button product-control__elem" href="<?=$this->host?>/dialog/person=<?=$auction['ownerId']?>/user=<?=$user?>">Написать организатору</a>
 			<?endif?>
-			<!--Если пользователь уже сделал ставку, то пусть топает домой-->
 			<form class="flex-row product-control__cost-form" method="POST" action="<?=$_SERVER['REQUEST_URI']?>">
-				<!--Добавить минимальное значение как $текущаяСтавка + $минимальныйШаг-->
 				<input name="rise" class="input-box product-control__elem" type="number" min="<?=$minRate + $minStep?>" step="0.5" value="<?=$minRate + $minStep?>" placeholder="Ваша ставка">
-				<!--Это же значение подставить в значение поля-->
 				<input class="button product-control__elem" type="submit" value="Сделать ставку" <?=$auction['ownerId'] === $user || $auction['lastMember'] === $user || is_null($user) ? "disabled" : ""?>>
 				<?if('Error' === $riseStatus):?>
 					<p style="color:red">Ошибка при повышении ставки!</p>
