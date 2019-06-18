@@ -143,7 +143,7 @@ class dataBase {
 
 		// Описание запроса
 		$sqlReq = "SELECT id, name, initRate, curRate, date, photo FROM auctions
-		WHERE status='active' ORDER BY date " .
+		WHERE status='active' ORDER BY date DESC " .
 			"LIMIT " . ($offset ? "$offset, " : "") . $size;
 
 		// Получение ответа от БД об успешности выполнения запроса
@@ -163,13 +163,13 @@ class dataBase {
 		// Для созданных аукционов запрашиваются те аукционы, где $user=ownerId
 		if($tab === 'created')
 			$sqlReq = "SELECT id, name, initRate, curRate, date, photo FROM auctions
-				WHERE status='active' AND ownerId='$user' ORDER BY date " .
+				WHERE status='active' AND ownerId='$user' ORDER BY date DESC " .
 				"LIMIT " . ($offset ? "$offset, " : "") . $size;
 		// Для аукционов, где пользователь принимает участие, данные запрашиваются из соответствующего списка
 		if($tab === 'active')
 			$sqlReq = "SELECT a.id, a.name, a.initRate, a.curRate, a.date, a.photo FROM auctions AS a
 				INNER JOIN user_$user AS u ON a.id = u.auctionId
-				WHERE a.status='active' ORDER BY a.date " .
+				WHERE a.status='active' ORDER BY a.date DESC " .
 				"LIMIT " . ($offset ? "$offset, " : "") . $size;
 
 		// Выполнение запроса, если была выбрана одна из вкладок
