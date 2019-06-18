@@ -10,10 +10,12 @@
 				if(empty($item['photo']) || $item['photo'] == "NULL" || is_null($item['photo']))
 					$item['photo'] = "photos/box.png";
 				$t = strtotime($item['date']) - time();
-				$H = intdiv($t, 3600);
-				$i = intdiv($t - $H * 3600, 60);
-				$s = $t - $H * 3600 - $i * 60;
-				$t = "$H:$i:$s";
+				if($t >= 0) {
+					$H = intdiv($t, 3600);
+					$t = "$H:" . date("i:s", $t);
+				} else {
+					$t = "00:00:00";
+				}
 			?>
 			<li class="flex-column auction auction-box auction-timered">
 				<a class="flex-column auction__link" href="<?=$this->host?>/auction/id=<?=$item['id']?>">
