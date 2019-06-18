@@ -24,7 +24,11 @@
 			<?
 				if(empty($item['photo']) || $item['photo'] == "NULL" || is_null($item['photo']))
 					$item['photo'] = "photos/box.png";
-				$item['date'] = strtotime($item['date']) - time();
+				$t = strtotime($item['date']) - time();
+				$H = intdiv($t, 3600);
+				$i = intdiv($t - $H * 3600, 60);
+				$s = $t - $H * 3600 - $i * 60;
+				$t = "$H:$i:$s";
 			?>
 			<li class="flex-column auction auction-box auction-timered">
 				<a class="flex-column auction__link" href="<?=$this->host?>/auction/id=<?=$item['id']?>">
@@ -37,8 +41,7 @@
 							<p>Текущая ставка: <span style="color: #4af"><?=$item['curRate']?>&#8381;</span></p>
 						<?endif?>
 					</div>
-					<p>Оставшееся время: <span class="auction-exp-time"><?=date("H:i:s", $item['date'])?></span></p>
-					<p class="auction-exp-time__timestamp" hidden><?=$item['date']?></p>
+					<p>Оставшееся время: <span class="auction-exp-time"><?=$t?></span></p>
 				</a>
 			</li>
 		<?endforeach?>
