@@ -6,7 +6,14 @@
 		$ph = "img/box.png";
 		$alt = "Изображение отсутствует";
 	}
-	$auction['date'] = strtotime($auction['date']) - time();
+	$t = strtotime($auction['date']) - time();
+	if($t >= 0) {
+		$H = intdiv($t, 3600);
+		$t = "$H:" . date("i:s", $t);
+	} else {
+		$t = "00:00:00";
+	}
+
 ?>
 <h1 class="invisible">Просмотр аукциона</h1>
 <section class="flex-row auction-box auction-product auction-timered">
@@ -16,7 +23,7 @@
 	<div class="flex-column product-image-box">
 		<h2><?=$auction['name']?></h2>
 		<img class="product-image" src="<?=$this->host?>/<?=$ph?>" alt="<?=$alt?>">
-		<p>Оставшееся время: <span class="auction-exp-time"><?=date("H:i:s", $auction['date'])?></span></p>
+		<p>Оставшееся время: <span class="auction-exp-time"><?=$t?></span></p>
 		<p>Организатор: <?=$auction['ownerName']?></p>
 		<p class="auction-exp-time__timestamp" hidden><?=$item['date']?></p>
 	</div>
