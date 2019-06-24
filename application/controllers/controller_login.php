@@ -6,8 +6,8 @@ class Controller_Login extends Controller {
 		// Если ничего не пришло, значит пользователь только что зашёл
 		if(isset($_POST['login-name']) && isset($_POST['login-password'])) {
 			// Иначе нужно проверить его данные
-			$login = $_POST['login-name'];
-			$password = $_POST['login-password'];
+			$login = validator::validAnyString($_POST['login-name']);
+			$password = validator::validAnyString($_POST['login-password']);
 
 			$model = new Model_Login();
 			if($model->login($login, $password)) {

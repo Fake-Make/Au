@@ -4,7 +4,7 @@ class validator {
 	// Возвращает XSS-безопасную входную строку, если она содержит хотя бы один непробельный символ
 	// Иначе возвращает NULL
 	static function validAnyString($str) {
-		return strlen(trim($str)) ? htmlspecialchars($str) : NULL;
+		return strlen(trim($str)) ? strip_tags($str) : NULL;
 	}
 
 	// Возвращает натуральное число, если его возможно получить из строки
@@ -12,6 +12,12 @@ class validator {
 	static function validNaturalNumber($num) {
 		return ($num = intval($num)) < 1 ? 1 : $num;
 	}
+
+	// Возвращает XSS-безопасную входную строку, если она содержит хотя бы один непробельный символ
+	// Иначе возвращает NULL
+	static function validAnyStringCreate($str) {
+		return strlen(trim($str)) ? preg_replace("![^a-zA-Zа-яА-Я0-9]!ui", "", $str) : NULL;
+	}	
 
 	// Возвращает неотрицательное вещественное число в виде строки, если его возможно получить
 	// Иначе возвращает 0
