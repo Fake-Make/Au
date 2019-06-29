@@ -1,0 +1,14 @@
+ToDo List at Au.ru
+
+Front-End
+- [ ] Edit all the styles at web-site;
+
+Back-End
+- [ ] Add ending of auction;
+- [ ] Add administration personal cabinet;
+- [ ] Add user promotion and blocking;
+- [ ] Develop validation for user blocked-flag;
+
+Seo-Optimization
+- [ ] Add key-words;
+- [ ] Add description for web-pages;
